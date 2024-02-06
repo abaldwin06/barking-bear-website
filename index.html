@@ -451,35 +451,6 @@
                 </div>
               </div>
               <div class="row py-2 px-2 justify-content-center">
-                <div class="form-group form-check d-flex flex-wrap justify-content-center align-items-center align-content-between col-lg-10 col-md-10">
-                  <div class="d-flex justify-content-start align-items-center px-2 py-1 col-lg-5">
-                    <input type="checkbox" class="form-check-input form-control" id="boarding">
-                    <label class="form-check-label px-1" for="boarding">Boarding</label>
-                  </div>
-                  <div class="d-flex justify-content-start align-items-center px-2 py-1 col-lg-5">
-                    <input type="checkbox" class="form-check-input form-control" id="advwalks">
-                    <label class="form-check-label px-1" for="advwalks">Adventure Walks</label>
-                  </div>
-                  <div class="d-flex justify-content-start align-items-center px-2 py-1 col-lg-5">
-                    <input type="checkbox" class="form-check-input form-control" id="daycare">
-                    <label class="form-check-label px-1" for="daycare">Daycare</label>
-                  </div>
-                  <div class="d-flex justify-content-start align-items-center px-2 py-1 col-lg-5">
-                    <input type="checkbox" class="form-check-input form-control" id="dropins">
-                    <label class="form-check-label px-1" for="dropins">Drop Ins & Walks</label>
-                  </div>
-                  <div class="d-flex justify-content-start align-items-center px-2 py-1 col-lg-5">
-                    <input type="checkbox" class="form-check-input form-control" id="dropins">
-                    <label class="form-check-label px-1" for="dropins">Hikes</label>
-                  </div>
-                  <div class="d-flex justify-content-start align-items-center px-2 py-1 col-lg-5">
-                    <input type="checkbox" class="form-check-input form-control" id="dropins">
-                    <label class="form-check-label px-1" for="dropins">Play Dates</label>
-                  </div>
-                  <div class="validate"></div>
-                </div>
-              </div>
-              <div class="row gy-4">
                 <div class="col-lg-6 col-md-6">
                   <input type="text" name="startdate" class="form-control" id="startdate" placeholder="Start Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                   <div class="validate"></div>
@@ -489,14 +460,18 @@
                   <div class="validate"></div>
                 </div>
               </div>
-              <div class="form-group mt-3">
+              <div class="form-group mt-3 py-2 px-2">
                 <textarea class="form-control" name="message" rows="5" placeholder="Tell us about your dog!"></textarea>
+                <div class="validate"></div>
+              </div>
+              <div class="form-group d-none">
+                <input type="text" class="form-control" name="otherrequest">
                 <div class="validate"></div>
               </div>
               <div class="mb-3">
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>
-                <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
+                <div class="sent-message">Your booking request was sent. We will call back or send an email to confirm your reservation. Thank you!</div>
               </div>
               <div class="text-center"><button type="submit">Request Booking</button></div>
             </form>
@@ -505,7 +480,7 @@
         </div>
 
       </div>
-    </section><!-- End Book A Table Section -->
+    </section><!-- End Reservation Section -->
 
 
   </main><!-- End #main -->
