@@ -1,0 +1,40 @@
+/*--------------------------------------------------------------
+# Gallery Section
+--------------------------------------------------------------*/
+.gallery {
+  overflow: hidden;
+
+  .swiper-pagination {
+    margin-top: 20px;
+    position: relative;
+  
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      background-color:lighten($secondary, 60);
+      opacity: 1;
+    }
+  
+    .swiper-pagination-bullet-active {
+      background-color: var(--color-primary);
+    }
+  }
+
+  .swiper-slide-active {
+    text-align: center;
+  }
+
+  @media (min-width: 992px) {
+    .swiper-wrapper {
+      padding: 40px 0;
+    }
+
+    .swiper-slide-active {
+      border: 6px solid var(--color-primary);
+      padding: 4px;
+      background: #fff;
+      z-index: 1;
+      transform: scale(1.2);
+    }
+  }
+}

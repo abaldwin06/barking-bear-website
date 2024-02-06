@@ -1,0 +1,87 @@
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+.footer {
+  font-size: 14px;
+  background-color: darken($secondary, 10);
+  padding: 50px 0;
+  color: rgba(#fff, .7);
+
+  .icon {
+    margin-right: 15px;
+    font-size: 24px;
+    line-height: 0;
+  }
+
+  h4 {
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 5px;
+    color: #fff;
+  }
+
+  .footer-links {
+    margin-bottom: 30px;
+    ul{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        padding: 10px 0;
+        &:first-child {
+          padding-top: 0;
+        }
+        display: flex;
+        align-items: center;
+      }
+
+      a {
+        color: rgba(#fff, .6);
+        transition: 0.3s;
+        display: inline-block;
+        line-height: 1;
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .social-links {
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(#fff, .2);
+      font-size: 16px;
+      color: rgba(#fff, .7);
+      margin-right: 10px;
+      transition: 0.3s;
+      &:hover {
+        color: #fff;
+        border-color: #fff;
+      }
+    }
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(#fff, .1);
+  }
+
+  .credits {
+    padding-top: 4px;
+    text-align: center;
+    font-size: 13px;
+    a {
+      color: #fff;
+    }
+  }
+
+}

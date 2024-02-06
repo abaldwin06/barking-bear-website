@@ -1,0 +1,56 @@
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+.header {
+  background: #fff;
+  transition: all 0.5s;
+  z-index: 997;
+  height: 90px;
+  border-bottom: 1px solid #fff;;
+
+  @media (max-width: 575px) {
+    height: 70px;
+  }
+
+  &.sticked {
+    border-color: #fff;
+    border-color: #eee;
+  }
+
+  .logo {
+    img {
+      max-height: 40px;
+      margin-right: 6px;
+    }
+    
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #000;
+      margin: 0;
+      font-family: var(--font-secondary);
+      span {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  .btn-book-a-table, .btn-book-a-table:focus {
+    font-size: 14px;
+    color: #fff;
+    background: var(--color-primary);
+    padding: 8px 20px;
+    margin-left: 30px;
+    border-radius: 50px;
+    transition: 0.3s;
+    &:hover {
+      color: #fff;
+      background: rgba($primary, .8);
+    }
+  }
+  
+}
+
+section {
+  scroll-margin-top: 90px;
+}
