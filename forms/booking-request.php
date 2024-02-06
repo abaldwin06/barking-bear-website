@@ -21,8 +21,8 @@
   $booking_request->to = $receiving_email_address;
   $booking_request->from_name = $_POST['name'];
   $booking_request->from_email = $_POST['email'];
-  $booking_request->subject = "New booking request from Barking Bear website";
-
+  $booking_request->subject = "Booking request from Barking Bear website";
+  
   // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
   /*
   $booking_request->smtp = array(
@@ -40,6 +40,7 @@
   $booking_request->add_message( $_POST['startdate'], 'Start Date', 4);
   $booking_request->add_message( $_POST['enddate'], 'End Date', 4);
   $booking_request->add_message( $_POST['message'], 'Message');
-
+  $booking_request->honeypot = $POST['otherrequest'];
+  
   echo $booking_request->send();
 ?>
