@@ -26,7 +26,7 @@
   // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
   
   $booking_request->smtp = array(
-    'host' => 'smtpout.secureserver.net',
+    'host' => 'localhost',
     'username' => 'example',
     'password' => 'pass',
     'port' => '587'
