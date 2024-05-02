@@ -3,7 +3,7 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/nz16mpls5ebf/public_html/
     - cp index.html $DEPLOYPATH
-    - cp assets/css/style.css $DEPLOYPATH
+    - cp assets/css/main.css $DEPLOYPATH
     - cp -R assets/img $DEPLOYPATH
     - cp -R assets/js $DEPLOYPATH
     - cp -R assets/scss $DEPLOYPATH
