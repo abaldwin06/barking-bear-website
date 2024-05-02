@@ -1,0 +1,11 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/nz16mpls5ebf/public_html/
+    - /bin/cp index.html $DEPLOYPATH
+    - /bin/cp assets/css/style.css $DEPLOYPATH
+    - /bin/cp -R assets/img $DEPLOYPATH
+    - /bin/cp -R assets/js $DEPLOYPATH
+    - /bin/cp -R assets/scss $DEPLOYPATH
+    - /bin/cp -R assets/vendor $DEPLOYPATH
+    - /bin/cp -R forms $DEPLOYPATH

@@ -24,14 +24,13 @@
   $booking_request->subject = "Booking request from Barking Bear website";
   
   // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
+  
   $booking_request->smtp = array(
-    'host' => 'example.com',
+    'host' => 'smtpout.secureserver.net',
     'username' => 'example',
     'password' => 'pass',
     'port' => '587'
   );
-  */
 
   $booking_request->add_message( $_POST['name'], 'Name');
   $booking_request->add_message( $_POST['petname'], 'Pet Name');
