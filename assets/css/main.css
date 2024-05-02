@@ -1236,7 +1236,23 @@ section {
 .book-with-us .reservation-img {
   background-size: cover;
   background-position: center;
+  min-height:22em;
 }
+
+.book-with-us .reservation-txt .btn {
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 36px;
+  border-radius: 50px;
+  transition: 0.5s;
+  color: #fff;
+  background: var(--color-primary);
+  box-shadow: 0 8px 28px var(--color-primary);
+}
+
+
 
 .book-with-us .reservation-form-bg {
   background: rgba(55, 55, 63, 0.04);
