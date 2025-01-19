@@ -70,7 +70,7 @@ section {
 }
 
 .section-bg {
-  background-color: #eee;
+  background-color: #fff;
 }
 
 .section-header {
@@ -1047,6 +1047,132 @@ section {
 }
 
 /*--------------------------------------------------------------
+# Training Section
+--------------------------------------------------------------*/
+
+.training h3 {
+  font-weight: 700;
+  font-size: 36px;
+  margin-bottom: 30px;
+  font-family: var(--font-secondary);
+}
+
+.training .book-with-us {
+  left: 10%;
+  right: 10%;
+  bottom: 5%;
+  /* background-color: #fff; */
+  box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  text-align: center;
+}
+
+.training .book-with-us a {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  border-radius: 50px;
+  display: inline-block;
+  padding: 12px 80px;
+  transition: 0.5s;
+  color: var(--color-primary);
+  background: #fff;
+  font-family: var(--font-default);
+}
+
+.training .book-with-us p {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.training .content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.training .content ul li {
+  padding: 0 0 8px 26px;
+  position: relative;
+}
+
+.training .content ul i {
+  position: absolute;
+  font-size: 20px;
+  left: 0;
+  top: -3px;
+  color: var(--color-primary);
+}
+
+.training .content p:last-child {
+  margin-bottom: 0;
+}
+.training .container-fluid {
+  padding: 0;
+}
+
+.training .training-info {
+  background-size: cover;
+  background-position: center;
+  min-height: 400px;
+  width: 90%;
+  padding: 30px;
+}
+
+@media (max-width: 575px) {
+  .training .training-info {
+    min-height: 500px;
+  }
+}
+
+.training .training-info:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.training .training-info h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #fff;
+  position: relative;
+}
+
+.training .training-info .price {
+  color: #fff;
+  border-bottom: 2px solid var(--color-primary);
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.training .training-info .description {
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+}
+
+.training .btn-book-with-us {
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 1px;
+  padding: 16px 60px;
+  margin-top: 20px;
+  border-radius: 50px;
+  transition: 0.5s;
+  color: #fff;
+  width: fit-content;
+  background: var(--color-primary);
+}
+
+.training .btn-book-with-us:hover {
+  background: var(--color-accent);
+  box-shadow: 0 8px 28px var(--color-accent);
+}
+
+/*--------------------------------------------------------------
 # Services Section
 --------------------------------------------------------------*/
 .services .container-fluid {
@@ -1144,6 +1270,12 @@ section {
 .services .btn-book-with-us:hover {
   background: var(--color-accent);
   box-shadow: 0 8px 28px var(--color-accent);
+}
+
+span.coming-soon {
+  font-size: 16px;
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
 /*--------------------------------------------------------------
@@ -1565,20 +1697,30 @@ section {
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
+
 .hero {
   width: 100%;
-  background-size: cover;
+  min-height: 60vh;
+  max-height: 100vh;
+  padding: 100px 0 0 0;
+  display: block;
   position: relative;
+  background-image: url('../img/kittredgehouse.jpg');
+  background-color: #fff;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
   min-height: 60vh;
   max-height: 100vh;
   padding: 100px 0 0 0;
 }
 
 .hero h2 {
-  font-size: 54px;
+  font-size: 60px;
   font-weight: 700;
-  margin-bottom: 20px;
-  color: var(--color-secondary);
+  margin-bottom: 1.8rem;
+  margin-top: 1.8rem;
+  color: #fff;
   font-family: var(--font-primary);
 }
 
@@ -1587,8 +1729,9 @@ section {
 }
 
 .hero p {
-  color: #4f4f5a;
+  color: #fff;
   font-weight: 400;
+  font-size: larger;
   margin-bottom: 30px;
 }
 
