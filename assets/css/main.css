@@ -1047,16 +1047,27 @@ section.why-us {
   padding: 0;
 }
 
+.services .image-text {
+  width: fit-content;
+  background-color: #212529b3;
+  padding: 1rem;
+}
+
+
 .services .service-item {
   background-size: cover;
-  background-position: cente;
-  min-height: 400px;
-  padding: 30px;
+  background-position: center;
+  min-height: 32rem;
+  padding: 1.5rem;
+}
+
+.services .cover-top {
+  background-position: top;
 }
 
 @media (max-width: 575px) {
   .services .service-item {
-    min-height: 500px;
+    min-height: 32rem;
   }
 }
 
@@ -1078,9 +1089,9 @@ section.why-us {
 .services .service-item .price {
   color: #fff;
   border-bottom: 2px solid var(--color-primary);
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   position: relative;
 }
 
@@ -1099,13 +1110,13 @@ section.why-us {
 }
 
 .services .swiper-pagination {
-  margin-top: 20px;
+  margin-top: 1.25rem;
   position: relative;
 }
 
 .services .swiper-pagination .swiper-pagination-bullet {
-  width: 10px;
-  height: 10px;
+  width: .8rem;
+  height: .8rem;
   background-color: #d1d1d7;
   opacity: 1;
 }
@@ -1126,7 +1137,7 @@ section.why-us {
   font-weight: 500;
   font-size: 1.25rem;
   letter-spacing: 1px;
-  padding: 16px 60px;
+  padding: 1rem 3.75rem;
   border-radius: 50px;
   margin-top: 20px;
   transition: 0.5s;
@@ -1137,12 +1148,18 @@ section.why-us {
 
 .services .btn-book-with-us:hover {
   background: var(--color-accent);
-  box-shadow: 0 8px 28px var(--color-accent);
+  box-shadow: 0 .5rem 1.75rem var(--color-accent);
 }
 
-span.coming-soon {
-  font-size: 1rem;
+.services span.coming-soon {
+  font-size: 2rem;
   font-weight: 300;
+  display: block;
+  text-align: center;
+  width: 100%;
+  margin-left: -5px;
+  margin-right: -5px;
+  background-color: #ffffffb3;
   text-transform: uppercase;
 }
 

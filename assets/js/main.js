@@ -154,8 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
       clickable: true
     },
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: '.swiper-button-next-1',
+      prevEl: '.swiper-button-prev-1',
     }
   });
 
@@ -183,6 +183,12 @@ document.addEventListener('DOMContentLoaded', () => {
       320: {
         slidesPerView: 1,
         spaceBetween: 40
+      },
+
+      900:
+      {
+        slidesPerView: 2,
+        spaceBetween: 20
       },
 
       1200: {
