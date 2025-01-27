@@ -662,37 +662,8 @@ section.why-us {
 .about h3 {
   font-weight: 700;
   font-size: 2rem;
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
   font-family: var(--font-secondary);
-}
-
-.about .book-with-us {
-  left: 10%;
-  right: 10%;
-  bottom: 5%;
-  /* background-color: #fff; */
-  box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.08);
-  padding: 20px;
-  text-align: center;
-}
-
-.about .book-with-us a {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 5px;
-  border-radius: 50px;
-  display: inline-block;
-  padding: 12px 80px;
-  transition: 0.5s;
-  color: var(--color-primary);
-  background: #fff;
-  font-family: var(--font-default);
-}
-
-.about .book-with-us p {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--color-primary);
 }
 
 .about .content ul {
@@ -817,11 +788,12 @@ section.why-us {
 /*--------------------------------------------------------------
 # Boarding Section
 --------------------------------------------------------------*/
-
+.boarding .image-text {
+  width: fit-content;
+  background-color: #212529b3;
+  padding: 1rem;
+}
 .boarding h3 {
-  font-weight: 700;
-  font-size: 2.25rem;
-  margin-bottom: 30px;
   font-family: var(--font-secondary);
 }
 
@@ -830,8 +802,8 @@ section.why-us {
   right: 10%;
   bottom: 5%;
   /* background-color: #fff; */
-  box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.08);
-  padding: 20px;
+  box-shadow: 0px 2px 1.5rem rgba(0, 0, 0, 0.08);
+  padding: 1.25rem;
   text-align: center;
 }
 
@@ -841,7 +813,7 @@ section.why-us {
   margin-bottom: 5px;
   border-radius: 50px;
   display: inline-block;
-  padding: 12px 80px;
+  padding: .75rem 5rem;
   transition: 0.5s;
   color: var(--color-primary);
   background: #fff;
@@ -860,7 +832,7 @@ section.why-us {
 }
 
 .boarding .content ul li {
-  padding: 0 0 8px 26px;
+  padding: 0 0 .5rem 1.625rem;
   position: relative;
 }
 
@@ -882,14 +854,14 @@ section.why-us {
 .boarding .boarding-info {
   background-size: cover;
   background-position: center;
-  min-height: 400px;
+  min-height: 32rem;
   width: 90%;
-  padding: 30px;
+  padding: 1.5rem;
 }
 
 @media (max-width: 575px) {
   .boarding .boarding-info {
-    min-height: 500px;
+    min-height: 32rem;
   }
 }
 
@@ -910,9 +882,9 @@ section.why-us {
 .boarding .boarding-info .price {
   color: #fff;
   border-bottom: 2px solid var(--color-primary);
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
   position: relative;
 }
 
@@ -926,8 +898,8 @@ section.why-us {
   font-weight: 500;
   font-size: 1.25rem;
   letter-spacing: 1px;
-  padding: 16px 60px;
-  margin-top: 20px;
+  padding: 1rem 3.75rem;
+  margin-top: 1.25rem;
   border-radius: 50px;
   transition: 0.5s;
   color: #fff;
@@ -937,17 +909,19 @@ section.why-us {
 
 .boarding .btn-book-with-us:hover {
   background: var(--color-accent);
-  box-shadow: 0 8px 28px var(--color-accent);
+  box-shadow: 0 .5rem 1.75rem var(--color-accent);
 }
 
 /*--------------------------------------------------------------
 # Training Section
 --------------------------------------------------------------*/
+.training .image-text {
+  width: fit-content;
+  background-color: #212529b3;
+  padding: 1rem;
+}
 
 .training h3 {
-  font-weight: 700;
-  font-size: 2.25rem;
-  margin-bottom: 30px;
   font-family: var(--font-secondary);
 }
 
@@ -956,8 +930,8 @@ section.why-us {
   right: 10%;
   bottom: 5%;
   /* background-color: #fff; */
-  box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.08);
-  padding: 20px;
+  box-shadow: 0px 2px 1.5rem rgba(0, 0, 0, 0.08);
+  padding: 1.25rem;
   text-align: center;
 }
 
@@ -967,7 +941,7 @@ section.why-us {
   margin-bottom: 5px;
   border-radius: 50px;
   display: inline-block;
-  padding: 12px 80px;
+  padding: .75rem 5rem;
   transition: 0.5s;
   color: var(--color-primary);
   background: #fff;
@@ -986,7 +960,7 @@ section.why-us {
 }
 
 .training .content ul li {
-  padding: 0 0 8px 26px;
+  padding: 0 0 .5rem 1.625;
   position: relative;
 }
 
@@ -1008,14 +982,14 @@ section.why-us {
 .training .training-info {
   background-size: cover, contain;
   background-position: 0 0;
-  min-height: 400px;
+  min-height: 32rem;
   width: 90%;
-  padding: 30px;
+  padding: 1.5rem;
 }
 
 @media (max-width: 575px) {
   .training .training-info {
-    min-height: 500px;
+    min-height: 32rem;
   }
 }
 
@@ -1036,9 +1010,9 @@ section.why-us {
 .training .training-info .price {
   color: #fff;
   border-bottom: 2px solid var(--color-primary);
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   position: relative;
 }
 
@@ -1052,7 +1026,7 @@ section.why-us {
   font-weight: 500;
   font-size: 1.25rem;
   letter-spacing: 1px;
-  padding: 16px 60px;
+  padding: 1rem 3.75rem;
   margin-top: 20px;
   border-radius: 50px;
   transition: 0.5s;
@@ -1063,7 +1037,7 @@ section.why-us {
 
 .training .btn-book-with-us:hover {
   background: var(--color-accent);
-  box-shadow: 0 8px 28px var(--color-accent);
+  box-shadow: 0 .5rem 1.75rem var(--color-accent);
 }
 
 /*--------------------------------------------------------------
@@ -1175,9 +1149,6 @@ span.coming-soon {
 /*--------------------------------------------------------------
 # Testimonials Section
 --------------------------------------------------------------*/
-.testimonials .section-header {
-  margin-bottom: 40px;
-}
 
 .testimonials .testimonials-carousel,
 .testimonials .testimonials-slider {
@@ -1186,7 +1157,7 @@ span.coming-soon {
 
 .testimonials .testimonial-item .testimonial-content {
   border-left: 3px solid var(--color-primary);
-  padding-left: 30px;
+  padding-left: 2rem;
 }
 
 .testimonials .testimonial-item .testimonial-img {
@@ -1199,7 +1170,7 @@ span.coming-soon {
 .testimonials .testimonial-item h3 {
   font-size: 1.25rem;
   font-weight: bold;
-  margin: 10px 0 5px 0;
+  margin: .625rem 0 .625rem 0;
   color: var(--color-default);
   font-family: var(--font-secondary);
 }
@@ -1207,7 +1178,7 @@ span.coming-soon {
 .testimonials .testimonial-item h4 {
   font-size: .875rem;
   color: #6c757d;
-  margin: 0 0 10px 0;
+  margin: 0 0 .625rem 0;
   font-family: var(--font-secondary);
 }
 
@@ -1242,13 +1213,13 @@ span.coming-soon {
 }
 
 .testimonials .swiper-pagination {
-  margin-top: 40px;
+  margin-top: 2.5rem;
   position: relative;
 }
 
 .testimonials .swiper-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
+  width: 1rem;
+  height: 1rem;
   background-color: #d1d1d7;
   opacity: 1;
 }
