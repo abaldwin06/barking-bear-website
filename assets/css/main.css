@@ -35,6 +35,13 @@
 body {
   font-family: var(--font-default);
   color: var(--color-default);
+  width: 100vw;
+  max-width: 100vw;
+}
+
+main {
+  width: 100vw;
+  max-width: 100vw;
 }
 
 a {
@@ -66,6 +73,8 @@ h6 {
 section {
   overflow: hidden;
   padding: 4rem 0;
+  width: 100vw;
+  max-width: 100vw;
 }
 
 .section-bg {
@@ -151,8 +160,9 @@ section {
   overflow: hidden;
   background: #fff;
   transition: all 0.6s ease-out;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
+  max-width: 100vw;
 }
 
 #preloader:before,
@@ -204,6 +214,8 @@ section {
   z-index: 997;
   height: 6rem;
   border-bottom: 1px solid #fff;
+  width: 100vw;
+  max-width: 100vw;
 }
 
 .header .logo img {
@@ -1742,6 +1754,8 @@ section.why-us {
   background-color: #1f1f24;
   padding: 50px 0;
   color: rgba(255, 255, 255, 0.7);
+  width: 100vw;
+  max-width: 100vw;
 }
 
 .footer .icon {
