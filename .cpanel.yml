@@ -2,11 +2,6 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/nz16mpls5ebf/public_html/
-    - export REPOPATH=/home/nz16mpls5ebf/repositories/barking-bear-website
-    - /bin/cp $REPOPATH/index.html $DEPLOYPATH
-    - /bin/cp -R $REPOPATH/assets/css $DEPLOYPATH/assets
-    - /bin/cp -R $REPOPATH/assets/img $DEPLOYPATH/assets
-    - /bin/cp -R $REPOPATH/assets/js $DEPLOYPATH/assets
-    - /bin/cp -R $REPOPATH/assets/scss $DEPLOYPATH/assets
-    - /bin/cp -R $REPOPATH/assets/vendor $DEPLOYPATH/assets
-    - /bin/cp -R $REPOPATH/forms $DEPLOYPATH
+    - /bin/cp index.html $DEPLOYPATH
+    - /bin/cp -R assets $DEPLOYPATH
+    - /bin/cp -R forms $DEPLOYPATH
