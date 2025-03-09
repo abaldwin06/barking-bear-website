@@ -1,0 +1,20 @@
+name: Publish website to cPanel
+on:
+  push:
+    branches:
+      - main
+jobs:
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
+    runs-on: ubuntu-latest
+    steps:
+    - name: FTP-Deploy-Action-STEP1
+      uses: actions/checkout@v4
+      with: 
+        fetch-depth: 2
+    - name: FTP-Deploy-Action-STEP2
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
