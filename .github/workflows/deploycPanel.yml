@@ -15,6 +15,7 @@ jobs:
     - name: FTP-Deploy-Action-STEP2
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        server: ${{ secrets.FTP_SERVER }}
+        server: ftp.barkingbearpetcare.com
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
+        port: 21
