@@ -1,7 +1,0 @@
----
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/nz16mpls5ebf/public_html/
-    - cp index.html $DEPLOYPATH
-    - cp -R assets $DEPLOYPATH
-    - cp -R forms $DEPLOYPATH
