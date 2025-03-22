@@ -1071,8 +1071,9 @@ section.why-us {
 .services .service-item {
   background-size: cover;
   background-position: center;
-  min-height: 32rem;
+  min-height: 24rem;
   padding: 1.5rem;
+  aspect-ratio: 1/1;
 }
 
 .services .cover-top {
@@ -1081,13 +1082,13 @@ section.why-us {
 
 @media (max-width: 575px) {
   .services .service-item {
-    min-height: 32rem;
+    min-height: 24rem;
   }
 }
 
 .services .service-item:before {
   content: "";
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.1);
   position: absolute;
   inset: 0;
 }
@@ -1166,7 +1167,7 @@ section.why-us {
 }
 
 .services span.coming-soon {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 300;
   display: block;
   text-align: center;
