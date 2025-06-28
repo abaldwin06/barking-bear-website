@@ -5,3 +5,15 @@ Barking Bear Pet Care Website
 1. Commit & Push local changes to remote GitHub repo, `main` branch
 2. This triggers a Github Action Workflow based off [this repo FTP-Deploy-Action](https://github.com/SamKirkland/FTP-Deploy-Action) which copies all files from the repo (except .git files) to the public_html folder on my GoDaddy Web Hosting plan's server
 Note: Couldn't get cpanel repository syncing via "Git Version Control" to work, so removed the .cpanel.yml file
+
+## Where I Left Off
+I have separate pages for boarding and training
+I have the header linking to boarding training and an empty hiking page
+I have redone the about us content and drop down, it's on the main page
+### Next
+- Add a hiking page
+- Add a day camp page
+- Fix the scrolling that cuts off the top header
+- Beef out the training page
+- Beef out the boarding page - with petsitting insurance
+- Should I remove the services carosel?, or make it an alternate home page?
