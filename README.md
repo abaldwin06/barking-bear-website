@@ -7,13 +7,18 @@ Barking Bear Pet Care Website
 Note: Couldn't get cpanel repository syncing via "Git Version Control" to work, so removed the .cpanel.yml file
 
 ## Where I Left Off
-I have separate pages for boarding and training
-I have the header linking to boarding training and an empty hiking page
+I have separate pages for boarding and training and hiking and the header links to them
 I have redone the about us content and drop down, it's on the main page
+
 ### Next
-- Add a hiking page
-- Add a day camp page
-- Fix the scrolling that cuts off the top header
+- Add a day camp page (and update header to link to it)
 - Beef out the training page
 - Beef out the boarding page - with petsitting insurance
 - Should I remove the services carosel?, or make it an alternate home page?
+- separate out booking page
+
+- Fix the scrolling that cuts off the top header
+- add a banner to hiking page about waitlist
+- add training hikes to the hiking page
+- add blog
+- add newsletter signup
