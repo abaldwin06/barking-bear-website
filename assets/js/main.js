@@ -329,10 +329,10 @@ class MainHeader extends HTMLElement {
                   <li><a href="boarding.html">Boarding</a></li>
                   <li><a href="training.html">Training</a></li>
                   <li><a href="hiking.html">Hiking</a></li>
-                  <li class="dropdown"><a href="#about"><span>About Us</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                  <li><a href="daycare.html">Day Camp</a></li>
+                  <li class="dropdown"><a href="#why-us"><span>About Us</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                     <ul>
                       <li><a href="#testimonials">Testimonials</a></li>
-                      <li><a href="#services">Services</a></li>
                       <li><a href="#team">Meet the Family</a></li>
                     </ul>
                 </ul>
