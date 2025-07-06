@@ -906,7 +906,6 @@ section.why-us {
   padding: 1rem;
 }
 
-
 .services .service-item {
   background-size: cover;
   background-position: center;
@@ -1663,6 +1662,7 @@ section.why-us {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 40px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -1674,11 +1674,13 @@ section.why-us {
 }
 
 .footer .social-links a.link-text {
+  text-align: left;
+  width: fit-content;
   height: 40px;
   border: none;
   font-size: .875rem;
   color: rgba(255, 255, 255, 0.7);
-  margin-left: 2rem;
+  margin-left: 0;
   transition: 0.3s;
 }
 
