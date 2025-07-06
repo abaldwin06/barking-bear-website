@@ -12,12 +12,14 @@ Redone the about us content and drop down, it's on the main page
 Polished the copy on the hiking page
 Fixed the scrolling where it cuts off the top header
 Consolidated the css for service pages
+Fixed the link to subsection bugs, and the padding of sections
 
 ### Next
 - copy and details for the day camp page
-- copy and details for the training page
+- copy and details for the training page, add sub-links to training sub-services
 - copy and details for the boarding page - with petsitting insurance
-- separate out booking page
+- separate out booking page, update links to point to new page
+
 
 - add a banner to hiking page about waitlist
 - add a banner to daycamp about limited time offer about waitlist

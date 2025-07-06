@@ -15,6 +15,8 @@
   --font-secondary: "Inter", sans-serif;
   font-size: 16px;
   --header-height: 7.5rem; /*THIS DETERMINES MARGIN NEEDED ON SERVICE PAGES*/
+  --header-img-height: 7.4rem;
+  --header-height-plus: 8.5rem;
 }
 
 /* Colors */
@@ -66,7 +68,7 @@ h6 {
 
 .tag-line {
   font-style: var(--font-primary);
-  color: var(--color-primary);
+  color: var(--color-primary) !important;
   font-weight: 500;
   font-size: 1.3rem;
   text-align: center;
@@ -84,9 +86,14 @@ h6 {
 --------------------------------------------------------------*/
 section {
   overflow: hidden;
-  margin: var(--header-height) 0;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
   width: 100vw;
   max-width: 100vw;
+}
+
+section:first-of-type {
+  margin-top: 1rem;
 }
 
 .section-bg {
@@ -119,6 +126,14 @@ section {
 .section-header p span {
   color: var(--color-primary);
 }
+
+#why-us:target,#testimonials:target, #team:target,
+#pack-hikes:target, #training-hikes:target
+{
+  padding-top: var(--header-height-plus);
+  margin-top: -1*var(--header-height-plus);
+};
+
 
 /*--------------------------------------------------------------
 # Scroll top button
@@ -228,10 +243,12 @@ section {
   border-bottom: 1px solid #fff;
   width: 100vw;
   max-width: 100vw;
+  position: sticky;
+  top: 0;
 }
 
 .header .logo img {
-  height: 7rem;
+  height: var(--header-img-height);
   margin-right: 6px;
   margin-left: 1.8rem;
 }
@@ -269,10 +286,6 @@ section {
 .header .btn-book-with-us:focus:hover {
   color: #fff;
   background: var(--color-accent);
-}
-
-section {
-  scroll-margin-top: 15rem;
 }
 
 @media (max-width: 640px) {
@@ -808,14 +821,14 @@ section.why-us {
 .service-page .service-info {
   background-size: cover;
   background-position: center;
-  min-height: 32rem;
+  min-height: 30rem;
   width: 90%;
   padding: 1.5rem;
 }
 
 @media (max-width: 575px) {
   .service-page .service-info {
-    min-height: 32rem;
+    min-height: 28rem;
   }
 }
 
@@ -1448,6 +1461,7 @@ section.why-us {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  margin-top: 0;
 }
 
 .hero img {
