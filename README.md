@@ -14,13 +14,13 @@ Fixed the scrolling where it cuts off the top header
 Consolidated the css for service pages
 Fixed the link to subsection bugs, and the padding of sections
 Separate out booking page, update links to point to new page, update footer with new socials
+Copy for the Day Care page
 
 ### Next
-- copy and details for the day camp page
 - copy and details for the training page, add sub-links to training sub-services
 - copy and details for the boarding page - with petsitting insurance
 
-
+- SEO optimization + conversions
 - add a banner to hiking page about waitlist
 - add a banner to daycamp about limited time offer about waitlist
 - add newsletter signup
