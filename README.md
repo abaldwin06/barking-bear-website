@@ -18,7 +18,12 @@ Copy for the Day Care page
 
 ### Next
 - copy and details for the training page, add sub-links to training sub-services
-- copy and details for the boarding page - with petsitting insurance
+- copy and details for the boarding page:
+    - add cpr
+    - add more booking buttons
+    - move "why us"
+    - add videos
+    - add faq
 
 - SEO optimization + conversions
 - add a banner to hiking page about waitlist

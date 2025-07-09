@@ -143,10 +143,10 @@ document.addEventListener('DOMContentLoaded', () => {
   new Swiper('.slides-1', {
     speed: 600,
     loop: true,
-    // autoplay: {
-    //   delay: 5000,
-    //   disableOnInteraction: false
-    // },
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
     slidesPerView: 'auto',
     pagination: {
       el: '.swiper-pagination',
@@ -154,9 +154,10 @@ document.addEventListener('DOMContentLoaded', () => {
       clickable: true
     },
     navigation: {
-      nextEl: '.swiper-button-next-1',
-      prevEl: '.swiper-button-prev-1',
-    }
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    centeredSlides: true
   });
 
   /**
@@ -208,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
       delay: 5000,
       disableOnInteraction: false
     },
-    slidesPerView: 'auto',
+    slidesPerView: '1',
     pagination: {
       el: '.swiper-pagination',
       type: 'bullets',
@@ -220,11 +221,11 @@ document.addEventListener('DOMContentLoaded', () => {
         spaceBetween: 20
       },
       640: {
-        slidesPerView: 3,
+        slidesPerView: 1,
         spaceBetween: 20
       },
       992: {
-        slidesPerView: 5,
+        slidesPerView: 3,
         spaceBetween: 20
       }
     }

@@ -753,17 +753,13 @@ section.why-us {
 /*--------------------------------------------------------------
 # ServicePage (Boarding, Hiking, Training, DayCamp)
 --------------------------------------------------------------*/
-.service-page .image-text {
-  width: fit-content;
-  background-color: #212529b3;
-  padding: 1rem;
-}
 
 .service-page h3 {
   font-family: var(--font-secondary);
 }
 
-.service-page .book-with-us {
+/* SERVICE PAGE BOOK WITH US */
+.service-page .btn-book-with-us {
   left: 10%;
   right: 10%;
   bottom: 5%;
@@ -771,6 +767,21 @@ section.why-us {
   box-shadow: 0px 2px 1.5rem rgba(0, 0, 0, 0.08);
   padding: 1.25rem;
   text-align: center;
+  font-weight: 500;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+  padding: 1rem 3.75rem;
+  margin-top: 1.25rem;
+  border-radius: 50px;
+  transition: 0.5s;
+  color: #fff;
+  width: fit-content;
+  background: var(--color-primary);
+}
+
+.service-page .btn-book-with-us:hover {
+  background: var(--color-accent);
+  box-shadow: 0 .5rem 1.75rem var(--color-accent);
 }
 
 .service-page .book-with-us a {
@@ -792,6 +803,7 @@ section.why-us {
   color: var(--color-primary);
 }
 
+/* SERVICE PAGE TEXT/CONTENT */
 .service-page .content ul {
   list-style: none;
   padding: 0;
@@ -818,6 +830,7 @@ section.why-us {
   padding: 0;
 }
 
+/* SERVICE INFO IMAGES */
 .service-page .service-info {
   background-size: cover;
   background-position: center;
@@ -830,6 +843,12 @@ section.why-us {
   .service-page .service-info {
     min-height: 28rem;
   }
+}
+
+.service-page .image-text {
+  width: fit-content;
+  background-color: #212529b3;
+  padding: 1rem;
 }
 
 .service-page .service-info:before {
@@ -860,25 +879,6 @@ section.why-us {
   color: rgba(255, 255, 255, 0.9);
   position: relative;
 }
-
-.service-page .btn-book-with-us {
-  font-weight: 500;
-  font-size: 1.25rem;
-  letter-spacing: 1px;
-  padding: 1rem 3.75rem;
-  margin-top: 1.25rem;
-  border-radius: 50px;
-  transition: 0.5s;
-  color: #fff;
-  width: fit-content;
-  background: var(--color-primary);
-}
-
-.service-page .btn-book-with-us:hover {
-  background: var(--color-accent);
-  box-shadow: 0 .5rem 1.75rem var(--color-accent);
-}
-
 /*--------------------------------------------------------------
 # Service Page Overrides for Specific Sections
 --------------------------------------------------------------*/
@@ -891,6 +891,158 @@ section.why-us {
 #training-hikes .service-page .service-info {
   background-size: cover, contain;
   background-position: 0 0;
+}
+
+
+/*--------------------------------------------------------------
+# Boarding Section
+--------------------------------------------------------------*/
+
+#boarding  .boarding-photo {
+  background-size: cover, contain;
+  background-position: 0 0;
+  height: 24rem;
+  width: 24rem;
+  padding: 1.5rem;
+  aspect-ratio: 1/1;
+}
+
+@media (max-width: 575px) {
+  #boarding   .boarding-photo  {
+    height: 24rem;
+  }
+}
+
+#boarding  .image-text {
+  width: fit-content;
+  background-color: #212529b3;
+  padding: .8rem;
+}
+
+#boarding .caption {
+  color: #fff;
+  border-bottom: 2px solid var(--color-primary);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+#boarding  .description {
+  margin-bottom: 0;
+  font-size: .8rem;
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+}
+
+#boarding  .vip {
+  font-weight: 300;
+  font-style: italic;
+}
+
+@media (min-width: 1200px) {
+  .boarding-services  .swiper-slide-active+.swiper-slide {
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    z-index: 1;
+  }
+}
+
+.boarding-services  .swiper-pagination {
+  margin-top: 1.25rem;
+  position: relative;
+}
+
+.boarding-services  .swiper-pagination .swiper-pagination-bullet {
+  width: 1rem;
+  height: 1rem;
+  background-color: #d1d1d7;
+  opacity: 1;
+}
+
+.boarding-services  .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--color-primary);
+}
+
+.boarding-services  .swiper-button-next {
+  color: #fff;
+  background-color: transparent;
+  border: none;
+}
+
+.boarding-services  .swiper-button-prev {
+  color: #fff;
+  background-color: transparent;
+  border: none;
+}
+
+.boarding-services  .btn-book-with-us {
+  font-weight: 500;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+  padding: 1rem 3.75rem;
+  border-radius: 50px;
+  margin-top: 20px;
+  transition: 0.5s;
+  color: #fff;
+  width: fit-content;
+  background: var(--color-primary);
+}
+
+.boarding-services  .btn-book-with-us:hover {
+  background: var(--color-accent);
+  box-shadow: 0 .5rem 1.75rem var(--color-accent);
+}
+
+#boarding .family-pic {
+  background-size: cover;
+  background-position: center;
+  height: 21rem;
+  width: 21rem;
+  padding: 1.5rem;
+  aspect-ratio: 1/1;
+}
+
+#boarding .psa-logo {
+  width: 15rem;
+}
+
+#boarding  .boarding-photo-pricing {
+  background-size: cover;
+  background-position: 0 0;
+  height: 26rem;
+  width: 100%rem;
+  padding: 1.5rem;
+  aspect-ratio: 1/1;
+  margin: 10px;
+}
+
+#boarding  .boarding-photo-pricing .image-text {
+  background-color: #2125297e;
+}
+
+/*the p element here is the bigger header*/
+#boarding-faq .section-header p {
+  font-size: 2rem;
+  font-weight: 400;
+  font-family: var(--font-primary);
+}
+
+#boarding-faq .accordion {
+  width: 90%;
+}
+
+.faq .btn {
+  color: var(--color-accent);
+  background-color: var(--color-secondary);
+  opacity: 70%;
+  width: 100%;
+  font-weight: 500;
+  
+}
+.faq .btn:hover {
+
+  box-shadow: 0 .5rem .8rem var(--color-accent);
 }
 
 /*--------------------------------------------------------------
@@ -1258,47 +1410,6 @@ section.why-us {
 }
 
 /*--------------------------------------------------------------
-# Gallery Section
---------------------------------------------------------------*/
-.gallery {
-  overflow: hidden;
-}
-
-.gallery .swiper-pagination {
-  margin-top: 20px;
-  position: relative;
-}
-
-.gallery .swiper-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: #d1d1d7;
-  opacity: 1;
-}
-
-.gallery .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: var(--color-primary);
-}
-
-.gallery .swiper-slide-active {
-  text-align: center;
-}
-
-@media (min-width: 992px) {
-  .gallery .swiper-wrapper {
-    padding: 40px 0;
-  }
-
-  .gallery .swiper-slide-active {
-    border: 6px solid var(--color-primary);
-    padding: 4px;
-    background: #fff;
-    z-index: 1;
-    transform: scale(1.2);
-  }
-}
-
-/*--------------------------------------------------------------
 # Contact Section
 --------------------------------------------------------------*/
 .contact .info-item {
@@ -1601,6 +1712,50 @@ section.why-us {
     width: 90vw;
   }
 }
+
+
+/*--------------------------------------------------------------
+# Gallery Section
+--------------------------------------------------------------*/
+.gallery {
+  overflow: hidden;
+}
+
+.gallery .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.gallery .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #d1d1d7;
+  opacity: 1;
+}
+
+.gallery .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--color-primary);
+}
+
+.gallery .swiper-slide-active {
+  text-align: center;
+}
+
+@media (min-width: 992px) {
+  .gallery .swiper-wrapper {
+    padding: 40px 0;
+  }
+
+  .gallery .swiper-slide-active {
+    border: 6px solid var(--color-primary);
+    padding: 4px;
+    background: #fff;
+    z-index: 1;
+    transform: scale(1.2);
+  }
+}
+
+
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/

@@ -1,0 +1,50 @@
+    <!-- ======= Boarding Section ======= -->
+    <section id="boarding" class="service-page">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Dog Boarding</h2>
+          <p>Family Style <span>Dog Boarding</span></p>
+        </div>
+        <div class="row justify-content-center">
+
+          <div class="col-lg-6 d-flex align-items-start" data-aos="fade-up" data-aos-delay="300">
+            <div class="content g-4 ps-0 ps-lg-5">
+              <p class="tag-line">A mountain getaway for your pup with licensed, insured pet sitters who truly care for your pet</p>
+              <p>Barking Bear Dog Boarding takes place in Anne & Dan's family home in Kittredge, CO, 30-45 min from Denver, which has:</p>
+              <ul>
+                <li><i class="bi bi-check2-all"></i> A fully fenced acre for playtime & potty breaks</li>
+                <li><i class="bi bi-check2-all"></i> Ten acres of meadow & forest for hikes and zoomies.</li>
+                <li><i class="bi bi-check2-all"></i> Two dog-proofed bedrooms dedicated to canine guests.</li>
+                <li><i class="bi bi-check2-all"></i> A "rumble room" for play time with couches for naps.</li>
+                <li><i class="bi bi-check2-all"></i> Many pet gated sections of the house to give dogs their own space until they are fully comfortable with one other.</li>
+                <li><i class="bi bi-check2-all"></i> Two dog behavior savvy, licensed, insured, and professional pet sitters, Dan & Anne, who will both be caring for your pet.</li>
+                <li><i class="bi bi-check2-all"></i> Two rescue pups and a rotating adoptable foster dog who can be partners in play, zoomies, or hikes with our guests.</li>
+                <li><i class="bi bi-check2-all"></i> Two cats in their golden years, who are kept in our bedroom, separate from all dogs in the house.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-6 g-4 d-flex align-items-start"  data-aos="fade-up" data-aos-delay="150">
+            <!-- <img src="assets/img/bear-dan-anne.jpeg" class="img-fluid square-img" alt="">  -->
+            <div class="service-info d-flex flex-column justify-content-start" style="background-image: url(assets/img/mouseandullie.jpeg)">
+              <div class="image-text">
+                <div class="price align-self-start mb-1"><h3 class="d-inline-block">Boarding</h3><p class="d-inline-block px-4 my-0">$90</p></div>
+                <p class="description">
+                  Puppy under 1 year: 100/night <br>
+                  Kennel-free experience: $100/night <br>
+                  Special Behavioral Needs: $100/night <br>
+                  Holidays: +$10/night <br>
+                  Pickup & Dropoff: +$25 <br>
+                  2nd dog from the same family: 30% off
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="row gy-7 gx-7 justify-content-center">
+          <a class="btn-book-with-us" href="./contact.html">Book Boarding</a>
+        </div>
+      </div>
+    </section><!-- End Boarding Section -->
