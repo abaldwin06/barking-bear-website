@@ -128,7 +128,10 @@ section:first-of-type {
 }
 
 #why-us:target,#testimonials:target, #team:target,
-#pack-hikes:target, #training-hikes:target
+#pack-hikes:target, #training-hikes:target, 
+#day-camp:target, #day-school:target,
+#private-coaching:target, #puppy-training:target,
+#board-and-train:target, #skills-sessions:target
 {
   padding-top: var(--header-height-plus);
   margin-top: -1*var(--header-height-plus);
@@ -879,20 +882,124 @@ section.why-us {
   color: rgba(255, 255, 255, 0.9);
   position: relative;
 }
+
 /*--------------------------------------------------------------
-# Service Page Overrides for Specific Sections
+# Hiking Page Overrides
 --------------------------------------------------------------*/
-
-#training .service-page .service-info {
-  background-size: cover, contain;
-  background-position: 0 0;
-}
-
 #training-hikes .service-page .service-info {
   background-size: cover, contain;
   background-position: 0 0;
 }
 
+/*--------------------------------------------------------------
+# Training Page Overrides
+--------------------------------------------------------------*/
+/*make training service sections a little smaller*/
+section.training {
+  overflow: visible;
+}
+
+.training .service-info {
+    min-height: 25rem;
+    width: 100%;
+  }
+
+#skills-sessions .service-info {
+  background-position: top;
+}
+
+/*sizing of my photo on training bio section*/
+#training .service-info {
+  background-size: cover;
+  background-position: top;
+  height: 30rem;
+}
+
+@media (max-width: 992px) {
+  #training .service-info {
+    height: 18rem;
+    margin: 2rem;
+    margin-top: inherit;
+  }
+}
+
+/* box link is the outer box */
+#how-we-work .box-link {
+  width: 19%;
+}
+
+#how-we-work .box-link:hover {
+  color: var(--color-primary);
+  
+}
+
+/* icon box is the inner box */
+#how-we-work .icon-box {
+  border: #77639150 2px solid;
+  border-radius: 5px;
+  padding: 1rem 1.5rem;
+}
+
+#how-we-work .icon-box h3 {
+  font-size: 1.25rem !important;
+  font-weight: 400;
+  margin: 0 0 1rem 0;
+  font-family: var(--font-secondary);
+}
+
+#how-we-work .icon-box h3:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 940px) {
+  #how-we-work .why-us .icon-box:hover {
+    transform: scale(1.1);
+  }
+}
+
+/* btn box is the purple box */
+#how-we-work .btn-box {
+  margin: .8rem 0;
+  border-radius: 10px;
+  width: 90%;
+}
+
+@media (min-width: 940px) {
+  #how-we-work .btn-box:hover {
+    transform: scale(1.1);
+  }
+}
+
+#how-we-work .btn-box .bi {
+  margin-bottom: .5rem;
+  font-size: 2.5rem;
+  line-height: 4rem;
+  background: #fff;
+  border-radius: 50px;
+  color: var(--color-primary);
+  width: 4rem;
+  height: 4rem;
+  margin-right: 1.5rem;
+  text-align: center;
+}
+
+#how-we-work .btn-box .sub-title {
+  font-size: .3rem;
+  font: var(--font-secondary);
+  text-transform:uppercase;
+  font-weight: 200;
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: .4rem;
+}
+
+#how-we-work .btn-box h3 {
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  font-size: 2.125rem;
+  margin-bottom: 5px;
+}
 
 /*--------------------------------------------------------------
 # Boarding Section
@@ -1004,7 +1111,18 @@ section.why-us {
 }
 
 #boarding .psa-logo {
-  width: 15rem;
+  max-height: 4rem;
+  padding: 2px 15px;
+}
+
+#boarding figure {
+  width: 12rem;
+}
+
+#boarding figcaption {
+  font: var(--font-secondary);
+  font-size: 8px;
+  text-align: center;
 }
 
 #boarding  .boarding-photo-pricing {
