@@ -17,14 +17,12 @@ Separate out booking page, update links to point to new page, update footer with
 Copy for the Day Care page
 
 ### Next
-- update boarding page with right video
-- GO LIVE
+- add newsletter signup
+- add a banner to hiking page about waitlist
+- add a banner to daycamp about limited time offer about waitlist
 
 - SEO optimization + conversions
 - add faq to boarding page
-- add a banner to hiking page about waitlist
-- add a banner to daycamp about limited time offer about waitlist
-- add newsletter signup
-- separate sign up for hikes or day camp
+- separate sign up for hikes/daycamp, boarding, training
 - add blog
 - Change services carosel on main page to top section
