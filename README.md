@@ -17,19 +17,14 @@ Separate out booking page, update links to point to new page, update footer with
 Copy for the Day Care page
 
 ### Next
-- copy and details for the training page, add sub-links to training sub-services
-- copy and details for the boarding page:
-    - add cpr
-    - add more booking buttons
-    - move "why us"
-    - add videos
-    - add faq
+- update boarding page with right video
+- GO LIVE
 
 - SEO optimization + conversions
+- add faq to boarding page
 - add a banner to hiking page about waitlist
 - add a banner to daycamp about limited time offer about waitlist
 - add newsletter signup
 - separate sign up for hikes or day camp
 - add blog
-
 - Change services carosel on main page to top section
