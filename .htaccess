@@ -15,8 +15,8 @@ RewriteCond %{REQUEST_FILENAME}\.html -f
 RewriteRule ^(.*)$ $1.html [NC,L]
 
 # REDIRECT FROM INDEX.HTML TO /--------------------------
-#RewriteBASE /
-#RewriteRule ^index\.html$ - [NC,L]
+RewriteBASE /
+RewriteRule ^index\.html$ - [NC,L]
 
 # REDIRECT TO ALWAYS HAVE TRAILING SLASHES-------------
 #RewriteCond %{REQUEST_FILENAME} !-f
