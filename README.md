@@ -8,13 +8,13 @@ Note: Couldn't get cpanel repository syncing via "Git Version Control" to work, 
 
 ## Where I Left Off
 HTACCESS FILE
-- completed code for redirecting to non-www and https
-- has templated commented out code for other SEO recommendations (trailing slash, no html extensions, get rid of index.html, still need code for 404)
+- completed code for redirecting to non-www and https, and removing html suffix
+- has templated commented out code for other SEO recommendations (trailing slash, get rid of index.html, still need code for 404)
+- updated links to remove .html
+- added canonical link tags to html
 
 ### Next
 - SEO optimization + conversions
-    - still need to add canonical link tags to html
-    - still need to update links to remove html
     - still need alt descriptions and aria features
     - reduce headers
 - add newsletter signup
