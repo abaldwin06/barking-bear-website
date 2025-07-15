@@ -1,0 +1,26 @@
+#rewrites start here
+RewriteEngine on
+
+# REDIRECT TO NON-WWW ALWAYS------------------------------
+rewritecond %{HTTP_HOST} ^www.barkingbearpetcare.com [NC]
+rewriterule ^(.*)$ http://barkingbearpetcare.com/$1 [R=301,NC,L]
+
+# REDIRECT TO HTTPS------------------------------------
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://barkingbearpetcare.com/$1 [R=301,NC,L]
+
+# REDIRECT TO ALWAYS HAVE TRAILING SLASHES-------------
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_URI} !/$
+#RewriteRule ^(.*[^/])$ /$1/ [L,R=301]
+
+# REDIRECT TO REMOVE .HTML SUFFIX-----------------------
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME}\.html -f
+#RewriteRule ^(.*)$ $1.html [NC,L]
+
+# REDIRECT TO A CUSTOM 404 FILE--------------------------
+
+# REDIRECT FROM INDEX.HTML TO /--------------------------
+#RewriteBASE /
+#RewriteRule ^index\.html$ - [NC,L]

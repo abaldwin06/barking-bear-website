@@ -7,22 +7,22 @@ Barking Bear Pet Care Website
 Note: Couldn't get cpanel repository syncing via "Git Version Control" to work, so removed the .cpanel.yml file
 
 ## Where I Left Off
-Have separate pages for boarding, training, hiking, daycare and the header links to them
-Redone the about us content and drop down, it's on the main page
-Polished the copy on the hiking page
-Fixed the scrolling where it cuts off the top header
-Consolidated the css for service pages
-Fixed the link to subsection bugs, and the padding of sections
-Separate out booking page, update links to point to new page, update footer with new socials
-Copy for the Day Care page
+HTACCESS FILE
+- completed code for redirecting to non-www and https
+- has templated commented out code for other SEO recommendations (trailing slash, no html extensions, get rid of index.html, still need code for 404)
 
 ### Next
+- SEO optimization + conversions
+    - still need to add canonical link tags to html
+    - still need to update links to remove html
+    - still need alt descriptions and aria features
+    - reduce headers
 - add newsletter signup
 - add a banner to hiking page about waitlist
 - add a banner to daycamp about limited time offer about waitlist
 
-- SEO optimization + conversions
 - add faq to boarding page
 - separate sign up for hikes/daycamp, boarding, training
 - add blog
 - Change services carosel on main page to top section
+- make it so service pages repeat in order of photo/description not alternating
