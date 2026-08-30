@@ -161,6 +161,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /**
+   * Randomize the order of testimonials so a different one is featured on each load
+   */
+  const testimonialWrapper = document.querySelector('.slides-3 .swiper-wrapper');
+  if (testimonialWrapper) {
+    const slides = Array.from(testimonialWrapper.children);
+    for (let i = slides.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [slides[i], slides[j]] = [slides[j], slides[i]];
+    }
+    slides.forEach(slide => testimonialWrapper.appendChild(slide));
+  }
+
+  /**
    * Init swiper slider with 3 slides at once in desktop view
    */
   new Swiper('.slides-3', {
