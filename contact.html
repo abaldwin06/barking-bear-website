@@ -121,9 +121,9 @@
             <!-- honeypot (hidden from humans, catches bots) -->
             <input type="text" name="website" class="bb-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-            <!-- Pet Parent Name -->
+            <!-- Pet Parent Details -->
             <fieldset class="bb-fieldset">
-              <legend>Pet Parent Name <span class="bb-req">*</span></legend>
+              <legend>Pet Parent Details <span class="bb-req">*</span></legend>
               <div class="row g-3">
                 <div class="col-md-6">
                   <label for="first_name" class="bb-label">First Name <span class="bb-req">*</span></label>
@@ -133,12 +133,6 @@
                   <label for="last_name" class="bb-label">Last Name <span class="bb-req">*</span></label>
                   <input type="text" name="last_name" id="last_name" class="form-control" required>
                 </div>
-              </div>
-            </fieldset>
-
-            <!-- Email & Phone -->
-            <fieldset class="bb-fieldset">
-              <div class="row g-3">
                 <div class="col-md-6">
                   <label for="email" class="bb-label">Email <span class="bb-req">*</span></label>
                   <input type="email" name="email" id="email" class="form-control" placeholder="example@example.com" required>
@@ -148,13 +142,6 @@
                   <input type="tel" name="phone" id="phone" class="form-control" placeholder="(000) 000-0000">
                   <small class="bb-hint">Please enter a valid phone number.</small>
                 </div>
-              </div>
-            </fieldset>
-
-            <!-- Address -->
-            <fieldset class="bb-fieldset">
-              <legend>Address <span class="bb-req">*</span></legend>
-              <div class="row g-3">
                 <div class="col-12">
                   <label for="address1" class="bb-label">Street Address</label>
                   <input type="text" name="address1" id="address1" class="form-control" placeholder="Street address">
@@ -186,6 +173,12 @@
                 <label class="bb-check"><input type="checkbox" name="services[]" value="Other"><span>Other</span></label>
               </div>
 
+              <!-- Conditional: appears when "Other" service is selected -->
+              <div class="bb-conditional" id="serviceOtherWrap" hidden>
+                <label for="service_other" class="bb-label">Please specify the service</label>
+                <input type="text" name="service_other" id="service_other" class="form-control" placeholder="Please specify">
+              </div>
+
               <!-- Conditional: appears when Dog Boarding or Board and Train is checked -->
               <div class="bb-conditional" id="boardingDatesWrap" hidden>
                 <label class="bb-label">Specific dates when boarding is needed <span class="bb-req">*</span></label>
@@ -208,6 +201,13 @@
                 <label class="bb-radio"><input type="radio" name="contact_preference" value="Chat via phone to discuss details before booking" required><span>Chat via phone to discuss details before booking</span></label>
                 <label class="bb-radio"><input type="radio" name="contact_preference" value="Chat via text to discuss details before booking"><span>Chat via text to discuss details before booking</span></label>
                 <label class="bb-radio"><input type="radio" name="contact_preference" value="Arrange a time to come meet us and see our place"><span>Arrange a time to come meet us and see our place</span></label>
+                <label class="bb-radio"><input type="radio" name="contact_preference" value="Other"><span>Other</span></label>
+              </div>
+
+              <!-- Conditional: appears when "Other" is selected -->
+              <div class="bb-conditional" id="likeToOtherWrap" hidden>
+                <label for="like_to_other" class="bb-label">Please specify</label>
+                <input type="text" name="like_to_other" id="like_to_other" class="form-control" placeholder="Please specify">
               </div>
             </fieldset>
 
@@ -226,6 +226,12 @@
               <div class="bb-conditional" id="referralNameWrap" hidden>
                 <label for="referral_name" class="bb-label">Who can we thank for telling you about us?</label>
                 <input type="text" name="referral_name" id="referral_name" class="form-control" placeholder="e.g. Jane Smith">
+              </div>
+
+              <!-- Conditional: appears when "Other" is selected in referral -->
+              <div class="bb-conditional" id="referralOtherWrap" hidden>
+                <label for="referral_other" class="bb-label">Please specify</label>
+                <input type="text" name="referral_other" id="referral_other" class="form-control" placeholder="Please specify">
               </div>
             </fieldset>
 

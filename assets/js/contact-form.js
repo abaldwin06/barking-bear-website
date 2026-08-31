@@ -1,8 +1,8 @@
 /**
  * Barking Bear — Contact / Booking form behavior
- * - Add / remove multiple dogs (each with notes + crate-trained status)
- * - Show "specific dates when boarding is needed" (multiple date pickers) when
- *   Dog Boarding or Board and Train is selected
+ * - Add / remove multiple dogs (each with notes + crate-trained status + crate-other detail)
+ * - Show boarding date pairs (check-in / check-out) when Dog Boarding or Board and Train is selected
+ * - "Other" follow-up free-text fields for: service, crate trained, "I'd like to", referral
  * - Show "Who can we thank..." when Referral/Word of Mouth is selected
  * - Phone number formatting
  * - Custom validation + AJAX submit to forms/contact.php
@@ -19,10 +19,22 @@
   var boardingDateList = document.getElementById("boardingDateList");
   var addBoardingDateBtn = document.getElementById("addBoardingDate");
   var boardingCheckboxes = form.querySelectorAll(".bb-boarding-service");
+  var phone = document.getElementById("phone");
+
+  // "Other" conditionals
+  var serviceOtherCb = form.querySelector('input[name="services[]"][value="Other"]');
+  var serviceOtherWrap = document.getElementById("serviceOtherWrap");
+  var serviceOtherInput = document.getElementById("service_other");
+
+  var contactPrefRadios = form.querySelectorAll('input[name="contact_preference"]');
+  var likeToOtherWrap = document.getElementById("likeToOtherWrap");
+  var likeToOtherInput = document.getElementById("like_to_other");
+
+  var referralRadios = form.querySelectorAll('input[name="referral"]');
   var referralNameWrap = document.getElementById("referralNameWrap");
   var referralNameInput = document.getElementById("referral_name");
-  var referralRadios = form.querySelectorAll('input[name="referral"]');
-  var phone = document.getElementById("phone");
+  var referralOtherWrap = document.getElementById("referralOtherWrap");
+  var referralOtherInput = document.getElementById("referral_other");
 
   var errorMsg = form.querySelector(".error-message");
   var sentMsg = form.querySelector(".sent-message");
@@ -73,6 +85,10 @@
             buildSelect("crate_trained[]", CRATE_OPTIONS) +
           "</div>" +
         "</div>" +
+        '<div class="bb-crate-other-row" hidden>' +
+          '<label class="bb-label">Please specify crate trained details</label>' +
+          '<input type="text" name="crate_other[]" class="form-control" placeholder="Please specify">' +
+        "</div>" +
         '<label class="bb-label">Any behavioral/medical details to be aware of</label>' +
         '<textarea name="dog_notes[]" class="form-control" rows="3" ' +
           'placeholder="social style with dogs, behavioral challenges, food allergies, etc"></textarea>' +
@@ -103,11 +119,31 @@
     }
   });
 
-  // ---- Boarding dates (multiple date pickers) ----
+  // Show crate-trained "Other" detail field when "Other" is chosen on a dog
+  dogList.addEventListener("change", function (e) {
+    if (e.target.matches && e.target.matches('select[name="crate_trained[]"]')) {
+      var card = e.target.closest("[data-dog]");
+      var row = card.querySelector(".bb-crate-other-row");
+      var show = e.target.value === "Other";
+      row.hidden = !show;
+      var input = row.querySelector("input");
+      input.required = show;
+      if (!show) input.value = "";
+    }
+  });
+
+  // ---- Boarding date pairs (check-in / check-out) ----
   function boardingDateRowHtml() {
     return (
-      '<div class="bb-date-row" data-date>' +
-        '<input type="date" name="boarding_dates[]" class="form-control" required>' +
+      '<div class="bb-date-pair" data-date>' +
+        '<div class="bb-date-field">' +
+          '<label class="bb-label">Check-in <span class="bb-req">*</span></label>' +
+          '<input type="date" name="boarding_checkin[]" class="form-control" required>' +
+        "</div>" +
+        '<div class="bb-date-field">' +
+          '<label class="bb-label">Check-out <span class="bb-req">*</span></label>' +
+          '<input type="date" name="boarding_checkout[]" class="form-control" required>' +
+        "</div>" +
         '<button type="button" class="bb-remove-date">Remove</button>' +
       "</div>"
     );
@@ -146,15 +182,39 @@
   }
   boardingCheckboxes.forEach(function (cb) { cb.addEventListener("change", updateBoardingDates); });
 
-  // ---- Referral name conditional ----
-  function updateReferralName() {
-    var checked = form.querySelector('input[name="referral"]:checked');
-    var show = checked && checked.value === "Referral/Word of Mouth";
-    referralNameWrap.hidden = !show;
-    referralNameInput.required = !!show;
-    if (!show) referralNameInput.value = "";
+  // ---- Service "Other" conditional ----
+  function updateServiceOther() {
+    var show = serviceOtherCb.checked;
+    serviceOtherWrap.hidden = !show;
+    serviceOtherInput.required = show;
+    if (!show) serviceOtherInput.value = "";
   }
-  referralRadios.forEach(function (r) { r.addEventListener("change", updateReferralName); });
+  serviceOtherCb.addEventListener("change", updateServiceOther);
+
+  // ---- "I'd like to" "Other" conditional ----
+  function updateContactPreference() {
+    var checked = form.querySelector('input[name="contact_preference"]:checked');
+    var show = checked && checked.value === "Other";
+    likeToOtherWrap.hidden = !show;
+    likeToOtherInput.required = !!show;
+    if (!show) likeToOtherInput.value = "";
+  }
+  contactPrefRadios.forEach(function (r) { r.addEventListener("change", updateContactPreference); });
+
+  // ---- Referral conditionals (Referral name + Other detail) ----
+  function updateReferralFields() {
+    var checked = form.querySelector('input[name="referral"]:checked');
+    var val = checked ? checked.value : "";
+    var showName = val === "Referral/Word of Mouth";
+    var showOther = val === "Other";
+    referralNameWrap.hidden = !showName;
+    referralNameInput.required = showName;
+    if (!showName) referralNameInput.value = "";
+    referralOtherWrap.hidden = !showOther;
+    referralOtherInput.required = showOther;
+    if (!showOther) referralOtherInput.value = "";
+  }
+  referralRadios.forEach(function (r) { r.addEventListener("change", updateReferralFields); });
 
   // ---- Phone formatting -> (000) 000-0000 ----
   if (phone) {
@@ -220,7 +280,9 @@
           boardingDateList.innerHTML = "";
           addDog();
           updateBoardingDates();
-          updateReferralName();
+          updateServiceOther();
+          updateContactPreference();
+          updateReferralFields();
           form.scrollIntoView({ behavior: "smooth", block: "start" });
         } else {
           showError(data || "Submission failed. Please try again.");
@@ -234,5 +296,7 @@
   // initial state
   addDog();
   updateBoardingDates();
-  updateReferralName();
+  updateServiceOther();
+  updateContactPreference();
+  updateReferralFields();
 })();

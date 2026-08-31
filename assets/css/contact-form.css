@@ -156,14 +156,20 @@
 }
 .bb-contact-form .bb-add-dog:hover { background: #8898a6; }
 
-/* Boarding date rows */
-.bb-contact-form .bb-date-row {
+/* Boarding date pairs (check-in / check-out) */
+.bb-contact-form .bb-date-pair {
   display: flex;
-  align-items: center;
-  gap: .6rem;
-  margin-bottom: .6rem;
+  align-items: flex-end;
+  gap: .8rem;
+  margin-bottom: .7rem;
+  padding-bottom: .7rem;
+  border-bottom: 1px dashed #e0e0e0;
 }
-.bb-contact-form .bb-date-row input { flex: 1; }
+.bb-contact-form .bb-date-pair:last-of-type { border-bottom: none; padding-bottom: 0; margin-bottom: .4rem; }
+.bb-contact-form .bb-date-field { flex: 1; }
+.bb-contact-form .bb-date-field .bb-label { margin-bottom: .35rem; }
+.bb-contact-form .bb-crate-other-row { margin-top: .6rem; }
+.bb-contact-form .bb-crate-other-row[hidden] { display: none; }
 .bb-contact-form .bb-remove-date {
   background: none;
   border: none;
@@ -172,6 +178,7 @@
   cursor: pointer;
   padding: 0;
   flex: none;
+  margin-bottom: .55rem;
 }
 .bb-contact-form .bb-remove-date:hover { text-decoration: underline; }
 .bb-contact-form #addBoardingDate { margin-top: .2rem; }
