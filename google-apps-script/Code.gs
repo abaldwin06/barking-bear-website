@@ -1,21 +1,30 @@
 /**
  * Barking Bear — Contact form submission logger
- * Appends every form submission as a new row in this Google Sheet.
+ * Appends every contact-form submission as a new row in this Google Sheet.
  *
  * SETUP (one time):
  *  1. Open your Google Sheet (or create a new one — any name).
  *  2. Extensions → Apps Script. Delete any code in the editor and paste
  *     this entire file. Click Save (💾).
- *  3. Deploy → New deployment → (gear icon) → Web app.
+ *  3. Generate a strong secret, e.g. run in a terminal:
+ *       openssl rand -hex 32
+ *     Paste it into SECRET_TOKEN below (between the quotes).
+ *  4. Deploy → New deployment → (gear icon) → Web app.
  *       - Description: "Barking Bear form logger"
  *       - Execute as: Me
  *       - Who has access: Anyone
  *     Click Deploy and authorize the prompts.
- *  4. Copy the "Web app URL" (looks like
+ *  5. Copy the "Web app URL" (looks like
  *     https://script.google.com/macros/s/AKfyc.../exec).
- *  5. Paste it into GOOGLE_SHEET_WEBAPP_URL in forms/contact.php on your
- *     site (between the quotes), and deploy the site.
- *  6. Submit the contact form once — a new row should appear in the sheet.
+ *  6. In forms/contact.php on your site, paste that URL into
+ *     GOOGLE_SHEET_WEBAPP_URL and paste the SAME secret into
+ *     GOOGLE_SHEET_TOKEN, then deploy the site.
+ *  7. Submit the contact form once — a new row should appear in the sheet.
+ *
+ * SECURITY: a POST is only logged when it carries the SECRET_TOKEN. Without it,
+ * the script returns "Forbidden" and writes nothing, so even someone who finds
+ * the Web app URL cannot inject rows. Keep your site repository PRIVATE so the
+ * URL and token are not exposed in its history.
  *
  * To update this script later: edit here, then Deploy → Manage deployments →
  * (pencil) → Version: New version → Deploy. The URL stays the same.
@@ -29,6 +38,11 @@ var HEADERS = [
   'Raw JSON'
 ];
 
+// Shared secret — must match GOOGLE_SHEET_TOKEN in forms/contact.php. Only
+// POSTs carrying this token are logged. Leave empty to accept any source
+// (NOT recommended if your site repo is public).
+var SECRET_TOKEN = '';
+
 function doPost(e) {
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
@@ -39,6 +53,12 @@ function doPost(e) {
       data = JSON.parse(e.postData.contents);
     } else if (e && e.parameter) {
       data = e.parameter;
+    }
+
+    // Reject anything that doesn't carry the shared secret.
+    if (SECRET_TOKEN && data.token !== SECRET_TOKEN) {
+      return ContentService.createTextOutput('Forbidden')
+        .setMimeType(ContentService.MimeType.TEXT);
     }
 
     var dogs = Array.isArray(data.dogs) ? data.dogs : [];

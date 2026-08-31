@@ -50,6 +50,11 @@
   // to a Google Sheet (see google-apps-script/Code.gs for setup).
   // Leave empty to skip — the email still sends either way.
   define('GOOGLE_SHEET_WEBAPP_URL', '');
+  // Shared secret that proves a POST really comes from your website. Set the
+  // SAME value in SECRET_TOKEN in google-apps-script/Code.gs. Leave empty to
+  // allow any source (NOT recommended for a public repo). Generate a strong
+  // one with:  openssl rand -hex 32
+  define('GOOGLE_SHEET_TOKEN', '');
 
   /** Best-effort POST a submission to the Google Sheet Apps Script web app. */
   function bb_post_to_sheet($url, $payload) {
@@ -177,6 +182,7 @@
   $sheet_url = getenv('GOOGLE_SHEET_WEBAPP_URL') ?: GOOGLE_SHEET_WEBAPP_URL;
   if ( $sheet_url !== '' ) {
     bb_post_to_sheet($sheet_url, array(
+      'token'               => getenv('GOOGLE_SHEET_TOKEN') ?: GOOGLE_SHEET_TOKEN,
       'submitted_at'        => date('c'),
       'name'                => $contact->from_name,
       'email'               => $_POST['email'] ?? '',
