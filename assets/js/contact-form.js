@@ -255,6 +255,12 @@
       showError("Please add at least one dog (name is required).");
       return;
     }
+    var phoneDigits = phone ? phone.value.replace(/\D/g, "") : "";
+    if (phoneDigits.length !== 10) {
+      showError("Please enter a valid 10-digit phone number.");
+      if (phone) phone.focus();
+      return;
+    }
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
