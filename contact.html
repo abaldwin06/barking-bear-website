@@ -43,6 +43,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/contact-form.css" rel="stylesheet">
 
 </head>
 
@@ -116,20 +117,133 @@
 
           <div class="col-lg-10 offset-lg-1 py-3 px-4 d-flex flex-column reservation-txt align-items-center text-center">
 
-            <iframe
-            id="JotFormIFrame-250718388238062"
-            title="Barking Bear Booking / Information Request"
-            onload="window.parent.scrollTo(0,0)"
-            allowtransparency="true"
-            allow="geolocation; microphone; camera; fullscreen"
-            src="https://form.jotform.com/250718388238062"
-            frameborder="0"
-            style="min-width:100%;max-width:100%;height:539px;border:none;"
-            scrolling="no"
-          >
-          </iframe>
-          <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
-          <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-250718388238062']", "https://form.jotform.com/")</script>
+            <form action="forms/contact.php" method="post" class="bb-contact-form reservation-form-bg">
+            <!-- honeypot (hidden from humans, catches bots) -->
+            <input type="text" name="website" class="bb-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <!-- Pet Parent Details -->
+            <fieldset class="bb-fieldset">
+              <legend>Pet Parent Details <span class="bb-req">*</span></legend>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="first_name" class="bb-label">First Name <span class="bb-req">*</span></label>
+                  <input type="text" name="first_name" id="first_name" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="last_name" class="bb-label">Last Name <span class="bb-req">*</span></label>
+                  <input type="text" name="last_name" id="last_name" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="email" class="bb-label">Email <span class="bb-req">*</span></label>
+                  <input type="email" name="email" id="email" class="form-control" placeholder="example@example.com" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="phone" class="bb-label">Phone Number <span class="bb-req">*</span></label>
+                  <input type="tel" name="phone" id="phone" class="form-control" placeholder="(000) 000-0000" required>
+                </div>
+                <div class="col-12">
+                  <label for="address1" class="bb-label">Street Address</label>
+                  <input type="text" name="address1" id="address1" class="form-control" placeholder="Street address">
+                </div>
+                <div class="col-md-6">
+                  <label for="address_city" class="bb-label">City</label>
+                  <input type="text" name="address_city" id="address_city" class="form-control">
+                </div>
+                <div class="col-md-3">
+                  <label for="address_state" class="bb-label">State</label>
+                  <input type="text" name="address_state" id="address_state" class="form-control" placeholder="CO">
+                </div>
+                <div class="col-md-3">
+                  <label for="address_zip" class="bb-label">ZIP Code <span class="bb-req">*</span></label>
+                  <input type="text" name="address_zip" id="address_zip" class="form-control" required>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Service Selection -->
+            <fieldset class="bb-fieldset">
+              <legend>Service Selection <span class="bb-req">*</span></legend>
+              <div class="bb-checkgrid">
+                <label class="bb-check"><input type="checkbox" name="services[]" value="Private Dog Training"><span>Private Dog Training</span></label>
+                <label class="bb-check"><input type="checkbox" name="services[]" value="Dog Boarding" class="bb-boarding-service"><span>Dog Boarding</span></label>
+                <label class="bb-check"><input type="checkbox" name="services[]" value="Dog Hikes"><span>Dog Hikes</span></label>
+                <label class="bb-check"><input type="checkbox" name="services[]" value="Doggie Day Camp / School"><span>Doggie Day Camp / School</span></label>
+                <label class="bb-check"><input type="checkbox" name="services[]" value="Board and Train" class="bb-boarding-service"><span>Board and Train</span></label>
+                <label class="bb-check"><input type="checkbox" name="services[]" value="Other"><span>Other</span></label>
+              </div>
+
+              <!-- Conditional: appears when "Other" service is selected -->
+              <div class="bb-conditional" id="serviceOtherWrap" hidden>
+                <label for="service_other" class="bb-label">Please specify the service</label>
+                <input type="text" name="service_other" id="service_other" class="form-control" placeholder="Please specify">
+              </div>
+
+              <!-- Conditional: appears when Dog Boarding or Board and Train is checked -->
+              <div class="bb-conditional" id="boardingDatesWrap" hidden>
+                <label class="bb-label">Specific dates when boarding is needed <span class="bb-req">*</span></label>
+                <div id="boardingDateList"></div>
+                <button type="button" class="bb-add-dog" id="addBoardingDate">+ Add Date</button>
+              </div>
+            </fieldset>
+
+            <!-- Dog Details (dynamic) -->
+            <fieldset class="bb-fieldset">
+              <legend>Dog Details <span class="bb-req">*</span></legend>
+              <div id="dogList"></div>
+              <button type="button" class="bb-add-dog" id="addDog">+ Add Dog</button>
+            </fieldset>
+
+            <!-- I'd like to... -->
+            <fieldset class="bb-fieldset">
+              <legend>I'd like to... <span class="bb-req">*</span></legend>
+              <div class="bb-radios">
+                <label class="bb-radio"><input type="radio" name="contact_preference" value="Chat via phone to discuss details before booking" required><span>Chat via phone to discuss details before booking</span></label>
+                <label class="bb-radio"><input type="radio" name="contact_preference" value="Chat via text to discuss details before booking"><span>Chat via text to discuss details before booking</span></label>
+                <label class="bb-radio"><input type="radio" name="contact_preference" value="Arrange a time to come meet us and see our place"><span>Arrange a time to come meet us and see our place</span></label>
+                <label class="bb-radio"><input type="radio" name="contact_preference" value="Other"><span>Other</span></label>
+              </div>
+
+              <!-- Conditional: appears when "Other" is selected -->
+              <div class="bb-conditional" id="likeToOtherWrap" hidden>
+                <label for="like_to_other" class="bb-label">Please specify</label>
+                <input type="text" name="like_to_other" id="like_to_other" class="form-control" placeholder="Please specify">
+              </div>
+            </fieldset>
+
+            <!-- How did you hear about us? -->
+            <fieldset class="bb-fieldset">
+              <legend>How did you hear about us? <span class="bb-req">*</span></legend>
+              <div class="bb-radios">
+                <label class="bb-radio"><input type="radio" name="referral" value="Instagram/Facebook" required><span>Instagram/Facebook</span></label>
+                <label class="bb-radio"><input type="radio" name="referral" value="Google Search"><span>Google Search</span></label>
+                <label class="bb-radio"><input type="radio" name="referral" value="Referral/Word of Mouth"><span>Referral/Word of Mouth</span></label>
+                <label class="bb-radio"><input type="radio" name="referral" value="Sniffspot"><span>Sniffspot</span></label>
+                <label class="bb-radio"><input type="radio" name="referral" value="Other"><span>Other</span></label>
+              </div>
+
+              <!-- Conditional: appears when Referral/Word of Mouth is selected -->
+              <div class="bb-conditional" id="referralNameWrap" hidden>
+                <label for="referral_name" class="bb-label">Who can we thank for telling you about us?</label>
+                <input type="text" name="referral_name" id="referral_name" class="form-control" placeholder="e.g. Jane Smith">
+              </div>
+
+              <!-- Conditional: appears when "Other" is selected in referral -->
+              <div class="bb-conditional" id="referralOtherWrap" hidden>
+                <label for="referral_other" class="bb-label">Please specify</label>
+                <input type="text" name="referral_other" id="referral_other" class="form-control" placeholder="Please specify">
+              </div>
+            </fieldset>
+
+            <div class="my-3">
+              <div class="loading">Sending your request...</div>
+              <div class="error-message"></div>
+              <div class="sent-message">
+                <span class="bb-success-icon">&#10003;</span>
+                <span class="bb-success-text"><strong>Thank you — we've received your inquiry!</strong> We'll review your details and be in touch with you soon.</span>
+              </div>
+            </div>
+            <div class="text-center"><button type="submit">Send Message</button></div>
+          </form>
 
           </div>
     </section><!-- End Booking Section -->
@@ -173,7 +287,7 @@
               Evergreen, Golden, Conifer,<br>
               Arvada, Edgewater, Lakewood,<br>
               Littleton, Englewood,<br>
-              Denver Metro (W of Quebec)
+              Denver Metro (W of Colorado)
             </p>
           </div>
         </div>
@@ -220,6 +334,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/contact-form.js"></script>
 
 </body>
 
