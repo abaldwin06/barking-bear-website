@@ -156,6 +156,26 @@
 }
 .bb-contact-form .bb-add-dog:hover { background: #8898a6; }
 
+/* Boarding date rows */
+.bb-contact-form .bb-date-row {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin-bottom: .6rem;
+}
+.bb-contact-form .bb-date-row input { flex: 1; }
+.bb-contact-form .bb-remove-date {
+  background: none;
+  border: none;
+  color: #b04a4a;
+  font-size: .82rem;
+  cursor: pointer;
+  padding: 0;
+  flex: none;
+}
+.bb-contact-form .bb-remove-date:hover { text-decoration: underline; }
+.bb-contact-form #addBoardingDate { margin-top: .2rem; }
+
 /* Status messages */
 .bb-contact-form .error-message,
 .bb-contact-form .sent-message,
