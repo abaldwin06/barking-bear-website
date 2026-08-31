@@ -1,17 +1,6 @@
 {
   "previewPort": 3000,
   "healthPath": "/",
-  "startCommand": "docker compose -f docker-compose.base44.yml up -d",
-  "secrets": [
-    {
-      "name": "SMTP_USERNAME",
-      "description": "The Gmail address that sends the form emails, e.g. barkingbearpetcare@gmail.com (used as the SMTP login and From address).",
-      "requiredAtBoot": false
-    },
-    {
-      "name": "SMTP_PASSWORD",
-      "description": "A Gmail App Password (16 chars) for the sending account. Create one at myaccount.google.com > Security > 2-Step Verification > App passwords. Do NOT use your normal Gmail password.",
-      "requiredAtBoot": false
-    }
-  ]
+  "startCommand": "chmod 755 /app && docker compose -f docker-compose.base44.yml up -d",
+  "secrets": []
 }

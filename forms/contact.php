@@ -22,8 +22,14 @@
   // Honeypot: if filled, the library silently returns OK
   $contact->honeypot = $_POST['website'] ?? '';
 
-  // ---- Email delivery via SMTP (Gmail) ----
-  // Credentials are supplied through the platform secrets (SMTP_USERNAME / SMTP_PASSWORD).
+  // ---- Email delivery ----
+  // Default: send via the host's built-in PHP mail() (GoDaddy's local relay),
+  // using a branded From address on the site's own domain. The submitter's
+  // address is captured as the Reply-To automatically by the library.
+  $contact->mailer = 'hello@barkingbearpetcare.com';
+
+  // Optional override: if SMTP credentials are provided (for a host that blocks
+  // mail() or requires authenticated SMTP), send through Gmail SMTP instead.
   $smtp_user = getenv('SMTP_USERNAME') ?: '';
   $smtp_pass = getenv('SMTP_PASSWORD') ?: '';
   if ( $smtp_user !== '' && $smtp_pass !== '' ) {
@@ -34,12 +40,7 @@
       'port'       => (int) (getenv('SMTP_PORT') ?: 587),
       'encryption' => getenv('SMTP_ENCRYPTION') ?: 'tls',
     );
-    // Gmail requires the From address to match the authenticated account
     $contact->mailer = $smtp_user;
-  } else {
-    // No SMTP credentials configured yet — report clearly instead of failing silently
-    echo 'Email sending is not configured. Please add your Gmail SMTP credentials (SMTP_USERNAME / SMTP_PASSWORD) and try again.';
-    return;
   }
 
   /** Append a styled section header to the email body. */
