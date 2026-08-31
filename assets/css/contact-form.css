@@ -1,0 +1,199 @@
+/* Barking Bear — Modern Contact / Booking Form
+   Scoped to .bb-contact-form so it does not affect other pages. */
+
+.bb-contact-form {
+  position: relative;
+  width: 100%;
+  text-align: left;
+  padding: 40px;
+  background: rgba(55, 55, 63, 0.04);
+  border-radius: 18px;
+}
+@media (max-width: 575px) {
+  .bb-contact-form { padding: 24px; border-radius: 14px; }
+}
+
+/* Honeypot: present for bots, invisible to humans */
+.bb-contact-form .bb-honeypot {
+  position: absolute !important;
+  left: -9999px; top: -9999px;
+  width: 1px; height: 1px;
+  opacity: 0;
+}
+
+/* Fieldsets / section spacing */
+.bb-contact-form .bb-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 1.9rem 0;
+}
+.bb-contact-form .bb-fieldset:last-of-type { margin-bottom: 1.4rem; }
+
+.bb-contact-form legend {
+  display: block;
+  width: 100%;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin: 0 0 1rem 0;
+  padding: 0;
+}
+
+.bb-contact-form .bb-label {
+  display: block;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  margin: 0 0 .5rem 0;
+}
+.bb-contact-form .bb-req { color: #df1529; }
+
+.bb-contact-form .bb-hint {
+  display: block;
+  font-size: .78rem;
+  color: #8a8a8a;
+  margin-top: .4rem;
+}
+
+/* Inputs / selects / textareas — rounded, modern */
+.bb-contact-form .form-control,
+.bb-contact-form .form-select {
+  border-radius: .6rem !important;
+  border: 1px solid #cccccc;
+  box-shadow: none;
+  font-size: .95rem;
+  padding: .7rem .9rem;
+  height: auto;
+  background: #fff;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.bb-contact-form textarea.form-control { border-radius: .6rem; }
+.bb-contact-form .form-control:focus,
+.bb-contact-form .form-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(119, 99, 145, .15);
+}
+.bb-contact-form .form-control::placeholder { color: #b0b0b0; }
+
+/* Service checkboxes — two columns */
+.bb-contact-form .bb-checkgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .4rem 2.2rem;
+}
+@media (max-width: 575px) {
+  .bb-contact-form .bb-checkgrid { grid-template-columns: 1fr; }
+}
+.bb-contact-form .bb-check,
+.bb-contact-form .bb-radio {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  font-size: .92rem;
+  color: var(--color-secondary);
+  cursor: pointer;
+  padding: .3rem 0;
+}
+.bb-contact-form .bb-check input,
+.bb-contact-form .bb-radio input {
+  width: 18px; height: 18px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+  flex: none;
+}
+
+/* Conditional boarding-dates block */
+.bb-contact-form .bb-conditional {
+  margin-top: 1.2rem;
+  padding: 1rem 1.1rem;
+  background: rgba(60, 172, 174, .08);
+  border: 1px solid rgba(60, 172, 174, .3);
+  border-radius: .8rem;
+}
+.bb-contact-form .bb-conditional[hidden] { display: none; }
+
+/* Dog cards */
+.bb-contact-form #dogList { display: flex; flex-direction: column; gap: 1.1rem; }
+.bb-contact-form .bb-dog-card {
+  border: 1px solid #e2e2e2;
+  border-radius: .9rem;
+  padding: 1.1rem 1.1rem 1.3rem;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .04);
+}
+.bb-contact-form .bb-dog-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .9rem;
+}
+.bb-contact-form .bb-dog-title {
+  font-weight: 700;
+  color: var(--color-primary);
+  font-size: .95rem;
+}
+.bb-contact-form .bb-remove-dog {
+  background: none;
+  border: none;
+  color: #b04a4a;
+  font-size: .82rem;
+  cursor: pointer;
+  padding: 0;
+}
+.bb-contact-form .bb-remove-dog:hover { text-decoration: underline; }
+
+.bb-contact-form .bb-add-dog {
+  margin-top: .9rem;
+  background: #9aaab7;
+  color: #fff;
+  border: none;
+  border-radius: .6rem;
+  padding: .6rem 1.2rem;
+  font-size: .9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+.bb-contact-form .bb-add-dog:hover { background: #8898a6; }
+
+/* Status messages */
+.bb-contact-form .error-message,
+.bb-contact-form .sent-message,
+.bb-contact-form .loading {
+  display: none;
+  border-radius: .6rem;
+  font-weight: 600;
+}
+.bb-contact-form .error-message {
+  color: #fff; background: #df1529;
+  text-align: left; padding: 15px; margin-bottom: 24px;
+}
+.bb-contact-form .sent-message {
+  color: #fff; background: var(--color-accent);
+  text-align: center; padding: 15px; margin-bottom: 24px;
+}
+.bb-contact-form .loading {
+  background: #fff; text-align: center; padding: 15px; margin-bottom: 24px;
+}
+.bb-contact-form .loading:before {
+  content: ""; display: inline-block; border-radius: 50%;
+  width: 22px; height: 22px; margin: 0 10px -5px 0;
+  border: 3px solid var(--color-accent); border-top-color: #fff;
+  animation: bb-spin 1s linear infinite;
+}
+@keyframes bb-spin { to { transform: rotate(360deg); } }
+
+/* Submit button */
+.bb-contact-form button[type="submit"] {
+  background: var(--color-primary);
+  border: 0;
+  padding: 14px 60px;
+  color: #fff;
+  font-weight: 600;
+  transition: .3s ease;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.bb-contact-form button[type="submit"]:hover {
+  background: var(--color-accent);
+}

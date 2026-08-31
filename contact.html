@@ -43,6 +43,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/contact-form.css" rel="stylesheet">
 
 </head>
 
@@ -116,25 +117,98 @@
 
           <div class="col-lg-10 offset-lg-1 py-3 px-4 d-flex flex-column reservation-txt align-items-center text-center">
 
-            <form action="forms/contact.php" method="post" class="php-email-form reservation-form-bg" style="width:100%;">
-            <div class="row">
-              <div class="col-md-6 form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+            <form action="forms/contact.php" method="post" class="bb-contact-form reservation-form-bg">
+            <!-- honeypot (hidden from humans, catches bots) -->
+            <input type="text" name="website" class="bb-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <!-- Pet Parent Name -->
+            <fieldset class="bb-fieldset">
+              <legend>Pet Parent Name <span class="bb-req">*</span></legend>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="first_name" class="bb-label">First Name <span class="bb-req">*</span></label>
+                  <input type="text" name="first_name" id="first_name" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="last_name" class="bb-label">Last Name <span class="bb-req">*</span></label>
+                  <input type="text" name="last_name" id="last_name" class="form-control" required>
+                </div>
               </div>
-              <div class="col-md-6 form-group mt-md-0">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+            </fieldset>
+
+            <!-- Email & Phone -->
+            <fieldset class="bb-fieldset">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="email" class="bb-label">Email <span class="bb-req">*</span></label>
+                  <input type="email" name="email" id="email" class="form-control" placeholder="example@example.com" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="phone" class="bb-label">Phone Number</label>
+                  <input type="tel" name="phone" id="phone" class="form-control" placeholder="(000) 000-0000">
+                  <small class="bb-hint">Please enter a valid phone number.</small>
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-            </div>
+            </fieldset>
+
+            <!-- Service Selection -->
+            <fieldset class="bb-fieldset">
+              <legend>Service Selection <span class="bb-req">*</span></legend>
+              <div class="bb-checkgrid">
+                <div class="bb-check-col">
+                  <label class="bb-check"><input type="checkbox" name="services[]" value="Virtual Private Dog Training"><span>Virtual Private Dog Training</span></label>
+                  <label class="bb-check"><input type="checkbox" name="services[]" value="Dog Boarding" class="bb-boarding-service"><span>Dog Boarding</span></label>
+                  <label class="bb-check"><input type="checkbox" name="services[]" value="Tuesday Doggie Day Camp / School"><span>Tuesday Doggie Day Camp / School</span></label>
+                  <label class="bb-check"><input type="checkbox" name="services[]" value="Puppy Field Trips"><span>Puppy Field Trips</span></label>
+                  <label class="bb-check"><input type="checkbox" name="services[]" value="Other"><span>Other</span></label>
+                </div>
+                <div class="bb-check-col">
+                  <label class="bb-check"><input type="checkbox" name="services[]" value="In Person Private Dog Training"><span>In Person Private Dog Training</span></label>
+                  <label class="bb-check"><input type="checkbox" name="services[]" value="Thursday Dog Hikes"><span>Thursday Dog Hikes</span></label>
+                  <label class="bb-check"><input type="checkbox" name="services[]" value="Board & Train" class="bb-boarding-service"><span>Board & Train</span></label>
+                </div>
+              </div>
+
+              <!-- Conditional: appears when Dog Boarding or Board & Train is checked -->
+              <div class="bb-conditional" id="boardingDatesWrap" hidden>
+                <label for="boarding_dates" class="bb-label">Specific dates when boarding is needed <span class="bb-req">*</span></label>
+                <input type="text" name="boarding_dates" id="boarding_dates" class="form-control" placeholder="e.g. Aug 15 – Aug 20">
+              </div>
+            </fieldset>
+
+            <!-- Dog Details (dynamic) -->
+            <fieldset class="bb-fieldset">
+              <legend>Dog Details <span class="bb-req">*</span></legend>
+              <div id="dogList"></div>
+              <button type="button" class="bb-add-dog" id="addDog">+ Add Dog</button>
+            </fieldset>
+
+            <!-- I'd like to... -->
+            <fieldset class="bb-fieldset">
+              <legend>I'd like to... <span class="bb-req">*</span></legend>
+              <div class="bb-radios">
+                <label class="bb-radio"><input type="radio" name="contact_preference" value="Chat via phone to discuss details before booking" required><span>Chat via phone to discuss details before booking</span></label>
+                <label class="bb-radio"><input type="radio" name="contact_preference" value="Chat via text to discuss details before booking"><span>Chat via text to discuss details before booking</span></label>
+                <label class="bb-radio"><input type="radio" name="contact_preference" value="Arrange a time to come meet us and see our place"><span>Arrange a time to come meet us and see our place</span></label>
+              </div>
+            </fieldset>
+
+            <!-- How did you hear about us? -->
+            <fieldset class="bb-fieldset">
+              <legend>How did you hear about us? <span class="bb-req">*</span></legend>
+              <div class="bb-radios">
+                <label class="bb-radio"><input type="radio" name="referral" value="Instagram/Facebook" required><span>Instagram/Facebook</span></label>
+                <label class="bb-radio"><input type="radio" name="referral" value="Google Search"><span>Google Search</span></label>
+                <label class="bb-radio"><input type="radio" name="referral" value="Referral/Word of Mouth"><span>Referral/Word of Mouth</span></label>
+                <label class="bb-radio"><input type="radio" name="referral" value="Sniffspot"><span>Sniffspot</span></label>
+                <label class="bb-radio"><input type="radio" name="referral" value="Other"><span>Other</span></label>
+              </div>
+            </fieldset>
+
             <div class="my-3">
-              <div class="loading">Loading</div>
+              <div class="loading">Sending your request...</div>
               <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
+              <div class="sent-message">Your request has been sent. Thank you! We'll be in touch soon.</div>
             </div>
             <div class="text-center"><button type="submit">Send Message</button></div>
           </form>
@@ -228,6 +302,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/contact-form.js"></script>
 
 </body>
 
