@@ -3,8 +3,6 @@
   * Barking Bear — Contact / Booking request handler
   * Builds a clearly formatted HTML email with all submitted details and sends
   * it to barkingbearpetcare@gmail.com via the "PHP Email Form" library.
-  * Also logs every submission to a Google Sheet (best-effort) — see
-  * google-apps-script/Code.gs and GOOGLE_SHEET_WEBAPP_URL below.
   */
 
   $receiving_email_address = 'barkingbearpetcare@gmail.com';
@@ -43,30 +41,6 @@
       'encryption' => getenv('SMTP_ENCRYPTION') ?: 'tls',
     );
     $contact->mailer = $smtp_user;
-  }
-
-  // ---- Google Sheet (Apps Script web app) ----
-  // Paste your deployed Apps Script web app URL here to log every submission
-  // to a Google Sheet (see google-apps-script/Code.gs for setup).
-  // Leave empty to skip — the email still sends either way.
-  define('GOOGLE_SHEET_WEBAPP_URL', '');
-  // Shared secret that proves a POST really comes from your website. Set the
-  // SAME value in SECRET_TOKEN in google-apps-script/Code.gs. Leave empty to
-  // allow any source (NOT recommended for a public repo). Generate a strong
-  // one with:  openssl rand -hex 32
-  define('GOOGLE_SHEET_TOKEN', '');
-
-  /** Best-effort POST a submission to the Google Sheet Apps Script web app. */
-  function bb_post_to_sheet($url, $payload) {
-    if ( !function_exists('curl_init') ) { return; }
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 8);
-    curl_exec($ch);
-    curl_close($ch);
   }
 
   /** Append a styled section header to the email body. */
@@ -135,7 +109,6 @@
   $crate_other   = $_POST['crate_other']  ?? [];
   $dog_notes     = $_POST['dog_notes']    ?? [];
   $dog_count     = count((array)$dog_names);
-  $dogs          = [];
   if ( $dog_count ) {
     bb_section($contact, 'Dog Details');
     for ( $i = 0; $i < $dog_count; $i++ ) {
@@ -151,15 +124,6 @@
         bb_row($contact, 'Crate Trained — Other', $crate_other[$i]);
       }
       bb_row($contact, 'Behavior/Medical Notes', $dog_notes[$i] ?? '');
-      $dogs[] = array(
-        'name'        => $dog_names[$i]     ?? '',
-        'sex'         => $dog_sex[$i]       ?? '',
-        'age'         => $dog_age[$i]       ?? '',
-        'breed'       => $dog_breed[$i]     ?? '',
-        'crate'       => $crate_trained[$i] ?? '',
-        'crate_other' => $crate_other[$i]   ?? '',
-        'notes'       => $dog_notes[$i]     ?? '',
-      );
       $contact->message .= '</div>';
     }
   }
@@ -176,31 +140,6 @@
   }
   if ( !empty($_POST['referral_other']) ) {
     bb_row($contact, 'How did you hear — Other (please specify)', $_POST['referral_other']);
-  }
-
-  // ---- Best-effort log to Google Sheet ----
-  $sheet_url = getenv('GOOGLE_SHEET_WEBAPP_URL') ?: GOOGLE_SHEET_WEBAPP_URL;
-  if ( $sheet_url !== '' ) {
-    bb_post_to_sheet($sheet_url, array(
-      'token'               => getenv('GOOGLE_SHEET_TOKEN') ?: GOOGLE_SHEET_TOKEN,
-      'submitted_at'        => date('c'),
-      'name'                => $contact->from_name,
-      'email'               => $_POST['email'] ?? '',
-      'phone'               => $_POST['phone'] ?? '',
-      'address1'            => $_POST['address1'] ?? '',
-      'city'                => $_POST['address_city'] ?? '',
-      'state'               => $_POST['address_state'] ?? '',
-      'zip'                 => $_POST['address_zip'] ?? '',
-      'services'            => is_array($services) ? implode(', ', $services) : '',
-      'service_other'       => $_POST['service_other'] ?? '',
-      'boarding_dates'      => $pairs,
-      'dogs'                => $dogs,
-      'contact_preference'  => $_POST['contact_preference'] ?? '',
-      'like_to_other'       => $_POST['like_to_other'] ?? '',
-      'referral'            => $_POST['referral'] ?? '',
-      'referral_name'       => $_POST['referral_name'] ?? '',
-      'referral_other'      => $_POST['referral_other'] ?? '',
-    ));
   }
 
   echo $contact->send();
