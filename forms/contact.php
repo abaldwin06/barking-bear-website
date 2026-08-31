@@ -1,7 +1,8 @@
 <?php
   /**
   * Barking Bear — Contact / Booking request handler
-  * Requires the "PHP Email Form" library (vendor/php-email-form/php-email-form.php)
+  * Builds a clearly formatted HTML email with all submitted details and sends
+  * it to barkingbearpetcare@gmail.com via the "PHP Email Form" library.
   */
 
   $receiving_email_address = 'barkingbearpetcare@gmail.com';
@@ -14,7 +15,6 @@
 
   $contact = new PHP_Email_Form;
   $contact->ajax = true;
-
   $contact->to = $receiving_email_address;
   $contact->from_name = trim( ($_POST['first_name'] ?? '') . ' ' . ($_POST['last_name'] ?? '') );
   $contact->from_email = $_POST['email'] ?? '';
@@ -22,76 +22,103 @@
   // Honeypot: if filled, the library silently returns OK
   $contact->honeypot = $_POST['website'] ?? '';
 
-  $contact->add_message( $contact->from_name, 'Pet Parent Name' );
-  $contact->add_message( $_POST['email'] ?? '', 'Email' );
-  $contact->add_message( $_POST['phone'] ?? '', 'Phone' );
+  /** Append a styled section header to the email body. */
+  function bb_section($contact, $title) {
+    $contact->message .= '<div style="background:#776391;color:#fff;font-weight:700;padding:9px 12px;font-size:14px;border-radius:4px;margin:18px 0 8px;">'
+      . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') . '</div>';
+  }
 
-  // Address
-  $contact->add_message( $_POST['address1'] ?? '', 'Street Address' );
-  $contact->add_message( $_POST['address_city'] ?? '', 'City' );
-  $contact->add_message( $_POST['address_state'] ?? '', 'State' );
-  $contact->add_message( $_POST['address_zip'] ?? '', 'ZIP' );
+  /** Append a labeled detail row to the email body (blank values show an em dash). */
+  function bb_row($contact, $label, $value) {
+    $v = trim((string)($value ?? ''));
+    if ($v === '') { $v = '—'; }
+    $contact->message .= '<div style="margin:0 0 6px;line-height:1.45;">'
+      . '<strong>' . htmlspecialchars($label, ENT_QUOTES, 'UTF-8') . ':</strong> '
+      . htmlspecialchars($v, ENT_QUOTES, 'UTF-8') . '</div>';
+  }
 
-  // Services (checkbox array)
+  $contact->message .= '<div style="font-size:13px;color:#555;margin-bottom:6px;">'
+    . 'A new inquiry was submitted from the Barking Bear website:</div>';
+
+  // ---- Pet Parent Details ----
+  bb_section($contact, 'Pet Parent Details');
+  bb_row($contact, 'Name',          $contact->from_name);
+  bb_row($contact, 'Email',         $_POST['email'] ?? '');
+  bb_row($contact, 'Phone',         $_POST['phone'] ?? '');
+  bb_row($contact, 'Street Address',$_POST['address1'] ?? '');
+  bb_row($contact, 'City',          $_POST['address_city'] ?? '');
+  bb_row($contact, 'State',         $_POST['address_state'] ?? '');
+  bb_row($contact, 'ZIP',           $_POST['address_zip'] ?? '');
+
+  // ---- Services Requested ----
+  bb_section($contact, 'Services Requested');
   $services = $_POST['services'] ?? [];
-  if ( is_array($services) ) {
-    $contact->add_message( implode(', ', $services), 'Services' );
-  }
+  bb_row($contact, 'Services', is_array($services) ? implode(', ', $services) : '');
   if ( !empty($_POST['service_other']) ) {
-    $contact->add_message( $_POST['service_other'], 'Service — Other (please specify)' );
+    bb_row($contact, 'Service — Other (please specify)', $_POST['service_other']);
   }
 
-  // Boarding date pairs (check-in / check-out)
+  // ---- Boarding Dates Needed (check-in / check-out pairs) ----
   $checkins  = $_POST['boarding_checkin']  ?? [];
   $checkouts = $_POST['boarding_checkout'] ?? [];
-  if ( is_array($checkins) && is_array($checkouts) ) {
-    $pairs = [];
-    $count = max( count($checkins), count($checkouts) );
+  $pairs = [];
+  if ( is_array($checkins) || is_array($checkouts) ) {
+    $count = max( count((array)$checkins), count((array)$checkouts) );
     for ( $i = 0; $i < $count; $i++ ) {
-      $ci = trim( $checkins[$i] ?? '' );
+      $ci = trim( $checkins[$i]  ?? '' );
       $co = trim( $checkouts[$i] ?? '' );
       if ( $ci !== '' || $co !== '' ) {
         $pairs[] = $ci . ' to ' . $co;
       }
     }
-    if ( count($pairs) ) {
-      $contact->add_message( implode('; ', $pairs), 'Boarding Dates Needed' );
+  }
+  if ( count($pairs) ) {
+    bb_section($contact, 'Boarding Dates Needed');
+    foreach ( $pairs as $idx => $p ) {
+      bb_row($contact, 'Stay ' . ($idx + 1), $p);
     }
   }
 
-  // Dogs (parallel arrays)
-  $dog_names      = $_POST['dog_name']      ?? [];
-  $dog_sex        = $_POST['dog_sex']       ?? [];
-  $dog_age        = $_POST['dog_age']       ?? [];
-  $dog_breed      = $_POST['dog_breed']     ?? [];
-  $crate_trained  = $_POST['crate_trained'] ?? [];
-  $crate_other    = $_POST['crate_other']   ?? [];
-  $dog_notes      = $_POST['dog_notes']     ?? [];
-  $dog_count      = count($dog_names);
-  for ( $i = 0; $i < $dog_count; $i++ ) {
-    $n = $i + 1;
-    $contact->add_message( $dog_names[$i]     ?? '', 'Dog ' . $n . ' Name' );
-    $contact->add_message( $dog_sex[$i]       ?? '', 'Dog ' . $n . ' Sex & S/N' );
-    $contact->add_message( $dog_age[$i]       ?? '', 'Dog ' . $n . ' Age' );
-    $contact->add_message( $dog_breed[$i]     ?? '', 'Dog ' . $n . ' Breed/Mix' );
-    $contact->add_message( $crate_trained[$i] ?? '', 'Dog ' . $n . ' Crate Trained' );
-    if ( !empty($crate_other[$i]) ) {
-      $contact->add_message( $crate_other[$i], 'Dog ' . $n . ' Crate Trained — Other' );
+  // ---- Dog Details ----
+  $dog_names     = $_POST['dog_name']     ?? [];
+  $dog_sex       = $_POST['dog_sex']      ?? [];
+  $dog_age       = $_POST['dog_age']      ?? [];
+  $dog_breed     = $_POST['dog_breed']     ?? [];
+  $crate_trained = $_POST['crate_trained'] ?? [];
+  $crate_other   = $_POST['crate_other']  ?? [];
+  $dog_notes     = $_POST['dog_notes']    ?? [];
+  $dog_count     = count((array)$dog_names);
+  if ( $dog_count ) {
+    bb_section($contact, 'Dog Details');
+    for ( $i = 0; $i < $dog_count; $i++ ) {
+      $n = $i + 1;
+      $contact->message .= '<div style="border:1px solid #e3e3e3;border-radius:6px;padding:10px 12px;margin:8px 0;background:#fafafa;">';
+      $contact->message .= '<div style="font-weight:700;color:#776391;margin-bottom:6px;">Dog ' . $n . '</div>';
+      bb_row($contact, 'Name',                $dog_names[$i]     ?? '');
+      bb_row($contact, 'Sex & S/N',           $dog_sex[$i]       ?? '');
+      bb_row($contact, 'Age',                 $dog_age[$i]       ?? '');
+      bb_row($contact, 'Breed/Mix',           $dog_breed[$i]     ?? '');
+      bb_row($contact, 'Crate Trained',       $crate_trained[$i] ?? '');
+      if ( !empty($crate_other[$i]) ) {
+        bb_row($contact, 'Crate Trained — Other', $crate_other[$i]);
+      }
+      bb_row($contact, 'Behavior/Medical Notes', $dog_notes[$i] ?? '');
+      $contact->message .= '</div>';
     }
-    $contact->add_message( $dog_notes[$i]     ?? '', 'Dog ' . $n . ' Behavior/Medical Notes' );
   }
 
-  $contact->add_message( $_POST['contact_preference'] ?? '', "I'd like to" );
+  // ---- Preferences ----
+  bb_section($contact, 'Preferences');
+  bb_row($contact, "I'd like to", $_POST['contact_preference'] ?? '');
   if ( !empty($_POST['like_to_other']) ) {
-    $contact->add_message( $_POST['like_to_other'], "I'd like to — Other (please specify)" );
+    bb_row($contact, "I'd like to — Other (please specify)", $_POST['like_to_other']);
   }
-
-  $contact->add_message( $_POST['referral'] ?? '', 'How did you hear about us' );
+  bb_row($contact, 'How did you hear about us', $_POST['referral'] ?? '');
   if ( !empty($_POST['referral_name']) ) {
-    $contact->add_message( $_POST['referral_name'], 'Referral — Who can we thank' );
+    bb_row($contact, 'Referral — Who can we thank', $_POST['referral_name']);
   }
   if ( !empty($_POST['referral_other']) ) {
-    $contact->add_message( $_POST['referral_other'], 'How did you hear — Other (please specify)' );
+    bb_row($contact, 'How did you hear — Other (please specify)', $_POST['referral_other']);
   }
 
   echo $contact->send();
