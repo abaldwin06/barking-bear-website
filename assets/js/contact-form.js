@@ -283,7 +283,7 @@
           updateServiceOther();
           updateContactPreference();
           updateReferralFields();
-          form.scrollIntoView({ behavior: "smooth", block: "start" });
+          sentMsg.scrollIntoView({ behavior: "smooth", block: "center" });
         } else {
           showError(data || "Submission failed. Please try again.");
         }

@@ -197,8 +197,17 @@
 }
 .bb-contact-form .sent-message {
   color: #fff; background: var(--color-accent);
-  text-align: center; padding: 15px; margin-bottom: 24px;
+  text-align: center; padding: 22px 25px; margin-bottom: 24px;
+  border-radius: .7rem; font-size: .97rem; line-height: 1.5;
 }
+.bb-contact-form .sent-message .bb-success-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(255, 255, 255, .25); font-size: 1.25rem; font-weight: 700;
+  margin-right: 12px; vertical-align: middle;
+}
+.bb-contact-form .sent-message .bb-success-text { vertical-align: middle; }
+.bb-contact-form .sent-message .bb-success-text strong { display: block; font-size: 1.05rem; }
 .bb-contact-form .loading {
   background: #fff; text-align: center; padding: 15px; margin-bottom: 24px;
 }
