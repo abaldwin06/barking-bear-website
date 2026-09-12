@@ -157,7 +157,11 @@ document.addEventListener('DOMContentLoaded', () => {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
-    centeredSlides: true
+    centeredSlides: true,
+    a11y: {
+      // Keep the descriptive aria-labels set in the HTML instead of "1 / 8" counts
+      slideLabelMessage: null
+    }
   });
 
   /**
