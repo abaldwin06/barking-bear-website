@@ -24,4 +24,5 @@ RewriteRule ^index\.html$ - [NC,L]
 #RewriteRule ^(.*[^/])$ /$1/ [L,R=301]
 
 # REDIRECT TO A CUSTOM 404 FILE--------------------------
+ErrorDocument 404 /404.html
 

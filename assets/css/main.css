@@ -617,7 +617,7 @@ section:first-of-type {
   min-height: 60vh;
   max-height: 80vh;
   padding: 6rem 0 0 0;
-  background-image: url('../img/kittredgehouse.jpg');
+  background-image: url('../img/kittredgehouse.png');
   background-color: #fff;
   background-position: center; 
   background-repeat: no-repeat; 
@@ -2066,7 +2066,7 @@ margin-right: 1rem;
   line-height: 0;
 }
 
-.footer h4 {
+.footer h2, .footer h3 {
   font-size: 1rem;
   font-weight: bold;
   position: relative;
