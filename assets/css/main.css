@@ -1542,12 +1542,6 @@ margin-right: 1rem;
 /*--------------------------------------------------------------
 # Boarding Section 3
 --------------------------------------------------------------*/
-/*vip vs regular section*/
-#boarding-3 .vip {
-  font-weight: 300;
-  font-style: italic;
-}
-
 #boarding-3 .boarding-photo-pricing {
   background-size: cover;
   background-position: 0 0;
