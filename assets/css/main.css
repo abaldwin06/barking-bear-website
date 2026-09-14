@@ -1593,6 +1593,9 @@ margin-right: 1rem;
 #boarding-pricing .pricing-notes p {
   margin-bottom: .75rem;
 }
+#boarding-pricing .container {
+  padding-bottom: 2.5rem;
+}
 
 /*boarding FAQ*/
 #boarding-faq .accordion {
