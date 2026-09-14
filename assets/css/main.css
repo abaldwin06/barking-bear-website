@@ -1568,6 +1568,38 @@ margin-right: 1rem;
   }
 }
 
+/*boarding pricing tables*/
+#boarding-pricing .pricing-table {
+  --bs-table-bg: transparent;
+  margin-bottom: 2rem;
+}
+#boarding-pricing .pricing-table th,
+#boarding-pricing .pricing-table td {
+  border-color: rgba(33, 37, 41, 0.15);
+}
+#boarding-pricing .pricing-table thead th {
+  border-bottom: 2px solid var(--color-primary);
+  white-space: nowrap;
+}
+#boarding-pricing .pricing-table .rate-name {
+  white-space: nowrap;
+}
+#boarding-pricing .pricing-table .discount {
+  color: var(--color-primary);
+  font-size: .8rem;
+  white-space: nowrap;
+}
+#boarding-pricing .pricing-table .rate-notes {
+  font-size: .85rem;
+  min-width: 16rem;
+}
+#boarding-pricing .pricing-notes {
+  font-size: .85rem;
+}
+#boarding-pricing .pricing-notes p {
+  margin-bottom: .75rem;
+}
+
 /*boarding FAQ - not live yet*/
 /*the p element here is the bigger header*/
 #boarding-faq .section-header p {
