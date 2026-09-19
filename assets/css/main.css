@@ -1170,6 +1170,28 @@ section.why-us {
   background-size: cover, contain;
   background-position: 0 0;
 }
+
+/*new hiker package callout*/
+#training-hikes .package-callout {
+  border: 2px solid var(--color-primary);
+  border-radius: 10px;
+  background-color: #7763911a;
+  padding: 1rem 1.25rem;
+  margin-top: 1.5rem;
+}
+
+#training-hikes .package-callout h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: .5rem;
+}
+
+#training-hikes .package-callout p {
+  margin-bottom: 0;
+  font-size: 1.05rem;
+  color: var(--color-default);
+}
 @media (max-width: 767px) {
 #training-hikes .content, #pack-hikes .content {
     width: 90%;
