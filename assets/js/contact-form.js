@@ -18,6 +18,7 @@
   var boardingWrap = document.getElementById("boardingDatesWrap");
   var boardingDateList = document.getElementById("boardingDateList");
   var addBoardingDateBtn = document.getElementById("addBoardingDate");
+  var boardingDateWarning = document.getElementById("boardingDateWarning");
   var boardingCheckboxes = form.querySelectorAll(".bb-boarding-service");
   var phone = document.getElementById("phone");
 
@@ -167,8 +168,23 @@
     if (e.target.classList.contains("bb-remove-date")) {
       e.target.closest("[data-date]").remove();
       renumberBoardingDates();
+      updateBoardingDateWarning();
     }
   });
+
+  // Cautionary (non-blocking) note when a stay starts during the booked holidays
+  var HOLIDAY_BOOKED_UNTIL = "2026-12-27"; // stays starting before this are unlikely to have availability
+
+  function updateBoardingDateWarning() {
+    var checkins = boardingDateList.querySelectorAll('input[name="boarding_checkin[]"]');
+    var startsDuringHolidays = Array.prototype.some.call(checkins, function (input) {
+      return input.value !== "" && input.value < HOLIDAY_BOOKED_UNTIL;
+    });
+    boardingDateWarning.hidden = !startsDuringHolidays;
+  }
+
+  boardingDateList.addEventListener("input", updateBoardingDateWarning);
+  boardingDateList.addEventListener("change", updateBoardingDateWarning);
 
   function updateBoardingDates() {
     var anyBoarding = Array.prototype.some.call(boardingCheckboxes, function (c) { return c.checked; });
@@ -179,6 +195,7 @@
     if (!anyBoarding) {
       boardingDateList.innerHTML = "";
     }
+    updateBoardingDateWarning();
   }
   boardingCheckboxes.forEach(function (cb) { cb.addEventListener("change", updateBoardingDates); });
 

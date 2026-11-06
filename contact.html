@@ -42,7 +42,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css?v=3" rel="stylesheet">
-  <link href="assets/css/contact-form.css" rel="stylesheet">
+  <link href="assets/css/contact-form.css?v=2" rel="stylesheet">
 
 </head>
 
@@ -116,6 +116,15 @@
 
           <div class="col-lg-10 offset-lg-1 py-3 px-4 d-flex flex-column reservation-txt align-items-center text-center">
 
+            <!-- Holiday boarding notice -->
+            <div class="bb-booking-notice">
+              <i class="bi bi-calendar-heart bb-notice-icon" aria-hidden="true"></i>
+              <div>
+                <span class="bb-notice-title">A friendly heads up about holiday boarding</span>
+                <p>Our boarding spaces are already fully booked through the end of 2026 with the exception of some availability over New Years Eve. We'd still love to hear from you about training, hikes, or future boarding stays.</p>
+              </div>
+            </div>
+
             <form action="forms/contact.php" method="post" class="bb-contact-form reservation-form-bg">
             <!-- honeypot (hidden from humans, catches bots) -->
             <input type="text" name="website" class="bb-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -181,6 +190,10 @@
               <div class="bb-conditional" id="boardingDatesWrap" hidden>
                 <label class="bb-label">Specific dates when boarding is needed <span class="bb-req">*</span></label>
                 <div id="boardingDateList"></div>
+                <div class="bb-date-warning" id="boardingDateWarning" role="status" hidden>
+                  <i class="bi bi-info-circle" aria-hidden="true"></i>
+                  <span>Just a heads up: our boarding is already booked through the holidays, so stays starting before December 27, 2026 are unlikely to have availability &mdash; you're still welcome to send your request and we'll let you know if anything opens up.</span>
+                </div>
                 <button type="button" class="bb-add-dog" id="addBoardingDate">+ Add Date</button>
               </div>
             </fieldset>
@@ -334,7 +347,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js?v=2"></script>
-  <script src="assets/js/contact-form.js"></script>
+  <script src="assets/js/contact-form.js?v=2"></script>
 
 </body>
 
