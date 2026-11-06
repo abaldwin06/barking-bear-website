@@ -234,6 +234,28 @@
   background: var(--color-accent);
 }
 
+/* Cautionary note for boarding dates that start during the booked holidays */
+.bb-date-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: .6rem;
+  margin: .4rem 0 1rem 0;
+  padding: .85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(198, 141, 45, .35);
+  background: rgba(236, 183, 82, .14);
+  color: #7a5c22;
+  font-size: .9rem;
+  line-height: 1.5;
+}
+.bb-date-warning[hidden] { display: none; }
+.bb-date-warning .bi {
+  flex: 0 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  color: #b07a1d;
+}
+
 /* Holiday boarding notice (contact page) */
 .bb-booking-notice {
   width: 100%;
