@@ -522,6 +522,23 @@ Merged training + day school page
   font-weight: 600;
 }
 
+/* Shaded availability note under a service's pricing card */
+.info-box {
+  width: 100%;
+  margin-top: .75rem;
+  padding: .9rem 1rem;
+  border-radius: 10px;
+  border-left: 4px solid var(--color-primary);
+  background: #7763911a;
+  font-size: .88rem;
+  line-height: 1.5;
+  color: #4b4b55;
+}
+
+.info-box p {
+  margin: 0;
+}
+
 /* Package-credit note inside the process steps reads in the site accent */
 .work-steps .emphasis {
   color: var(--color-accent);
