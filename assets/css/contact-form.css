@@ -233,3 +233,41 @@
 .bb-contact-form button[type="submit"]:hover {
   background: var(--color-accent);
 }
+
+/* Holiday boarding notice (contact page) */
+.bb-booking-notice {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: .9rem;
+  text-align: left;
+  padding: 1.15rem 1.4rem;
+  margin: 0 0 1.6rem 0;
+  border-radius: 14px;
+  border: 1px solid rgba(119, 99, 145, .22);
+  background: rgba(119, 99, 145, .07);
+  color: var(--color-secondary);
+}
+.bb-booking-notice .bb-notice-icon {
+  flex: 0 0 auto;
+  font-size: 1.45rem;
+  line-height: 1.2;
+  color: var(--color-primary);
+}
+.bb-booking-notice .bb-notice-title {
+  display: block;
+  font-weight: 700;
+  font-size: 1.02rem;
+  margin: 0 0 .2rem 0;
+}
+.bb-booking-notice p {
+  margin: 0;
+  font-size: .95rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 575px) {
+  .bb-booking-notice { padding: 1rem 1.1rem; gap: .7rem; }
+  .bb-booking-notice .bb-notice-icon { font-size: 1.25rem; }
+  .bb-booking-notice p { font-size: .9rem; }
+}
