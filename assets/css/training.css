@@ -473,6 +473,55 @@ Merged training + day school page
   color: var(--color-primary);
 }
 
+/*--------------------------------------------------------------
+# Mini pricing cards under service images (workshops, boarding school)
+--------------------------------------------------------------*/
+.mini-pricing {
+  width: 100%;
+  margin-top: 1rem;
+  padding: .9rem 1rem;
+  border: 2px solid #77639150;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.mini-pricing-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: .6rem;
+}
+
+.mini-pricing-table tbody th,
+.mini-pricing-table tbody td {
+  padding: .45rem .5rem;
+  font-size: .92rem;
+}
+
+.mini-pricing-table tbody th {
+  width: 62%;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.mini-pricing-table tbody td {
+  text-align: right;
+  white-space: nowrap;
+  font-weight: 600;
+  font-family: var(--font-secondary);
+}
+
+.mini-pricing-note {
+  margin: .65rem 0 0;
+  font-size: .88rem;
+  line-height: 1.45;
+  color: #4b4b55;
+}
+
+.mini-pricing-note b {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
 /* Package-credit note inside the process steps reads in the site accent */
 .work-steps .emphasis {
   color: var(--color-accent);
