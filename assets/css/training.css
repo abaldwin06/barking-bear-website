@@ -460,6 +460,11 @@ Merged training + day school page
   color: var(--color-primary);
 }
 
+/* Package-credit note inside the process steps reads in the site accent */
+.work-steps .emphasis {
+  color: var(--color-accent);
+}
+
 /*--------------------------------------------------------------
 # Service card overlays - subtle tag line under the image title
 --------------------------------------------------------------*/
