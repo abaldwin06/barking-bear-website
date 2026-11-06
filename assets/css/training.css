@@ -485,6 +485,12 @@ Merged training + day school page
   background: #fff;
 }
 
+/* Card that sits centered under its whole section */
+.mini-pricing--center {
+  max-width: 440px;
+  margin: 2.25rem auto 0;
+}
+
 .mini-pricing-title {
   font-size: 1.05rem;
   font-weight: 600;
@@ -522,21 +528,26 @@ Merged training + day school page
   font-weight: 600;
 }
 
-/* Shaded availability note under a service's pricing card */
+/* Shaded availability note under a service's pricing card (site teal) */
 .info-box {
   width: 100%;
   margin-top: .75rem;
   padding: .9rem 1rem;
   border-radius: 10px;
-  border-left: 4px solid var(--color-primary);
-  background: #7763911a;
+  border-left: 4px solid var(--color-accent);
+  background: #3cacae1f;
   font-size: .88rem;
   line-height: 1.5;
-  color: #4b4b55;
+  color: #3f4d4d;
 }
 
 .info-box p {
   margin: 0;
+}
+
+.info-box strong {
+  color: #2c7d7f;
+  font-weight: 600;
 }
 
 /* Package-credit note inside the process steps reads in the site accent */
