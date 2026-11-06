@@ -59,17 +59,19 @@ Merged training + day school page
   }
 }
 
-.training-group-panel .training-group .container {
+/* Only the group header itself is restyled; the service sections inside the
+   band keep the site's normal centred section headings. */
+.training-group-panel > .training-group .container {
   padding-top: 3.25rem;
-  padding-bottom: .5rem;
+  padding-bottom: 0;
 }
 
-.training-group-panel .section-header {
+.training-group-panel > .training-group .section-header {
   padding-bottom: 0;
   text-align: left;
 }
 
-.training-group-panel .small-heading {
+.training-group-panel > .training-group .small-heading {
   margin: 0 0 .65rem;
   color: #796695;
   font-size: .8rem;
@@ -79,7 +81,7 @@ Merged training + day school page
   font-weight: 650;
 }
 
-.training-group-panel .big-heading {
+.training-group-panel > .training-group .big-heading {
   margin: 0;
   color: #2f3a34;
   font-size: 3rem;
@@ -88,58 +90,42 @@ Merged training + day school page
   letter-spacing: -1px;
 }
 
-.training-group-panel .big-heading span {
+.training-group-panel > .training-group .big-heading span {
   color: #796695;
 }
 
-.training-group-panel .intro-lead {
+.training-group-panel > .training-group .intro-lead {
   margin: .75rem 0 0;
   color: #59635d;
   line-height: 1.55;
 }
 
-.training-group-panel--teal .small-heading,
-.training-group-panel--teal .big-heading span {
+.training-group-panel--teal > .training-group .small-heading,
+.training-group-panel--teal > .training-group .big-heading span {
   color: #2c7d7f;
 }
 
+/* One accent rule under each group heading, running about two-thirds across */
 .training-chapter-divider {
-  height: 1px;
-  margin: 1.75rem 0;
-  border: 0;
-  background: linear-gradient(90deg, rgba(121, 102, 149, .35), rgba(121, 102, 149, 0));
-}
-
-.training-group-panel--teal .training-chapter-divider {
-  background: linear-gradient(90deg, rgba(44, 125, 127, .35), rgba(44, 125, 127, 0));
-}
-
-.training-chapter-note {
-  margin: 0;
-  color: #716d75;
-  font-size: .72rem;
-  letter-spacing: .2px;
-}
-
-.training-chapter-seal {
-  width: 28px;
+  width: 66.666%;
   height: 3px;
-  margin-top: 1rem;
+  margin: 1.15rem 0 1.35rem;
+  border: 0;
   border-radius: 3px;
   background: #796695;
   opacity: .65;
 }
 
-.training-group-panel--teal .training-chapter-seal {
+.training-group-panel--teal .training-chapter-divider {
   background: var(--color-accent);
 }
 
 @media (max-width: 768px) {
-  .training-group-panel .training-group .container {
+  .training-group-panel > .training-group .container {
     padding-top: 2rem;
   }
 
-  .training-group-panel .big-heading {
+  .training-group-panel > .training-group .big-heading {
     font-size: 2.2rem;
   }
 }
