@@ -33,25 +33,22 @@ Merged training + day school page
   margin-bottom: 0;
 }
 
-/* Group "chapter" cards: each group opens on its own soft tint that
-   dissolves to white before the first service section begins. */
-.training-chapter {
-  box-sizing: border-box;
-  padding: 3rem 3.25rem;
-  border: 1px solid rgba(47, 58, 52, .1);
-  border-radius: 18px;
-  background: linear-gradient(180deg, #efeaf3 0%, #f6f4f7 33%, #fff 76%);
-  box-shadow: 0 5px 15px rgba(56, 47, 64, .06);
-  animation: training-chapter-arrive .8s cubic-bezier(.2, .7, .25, 1) both;
+/* Each group is one tinted band that holds its header plus its own service
+   sections: the tint opens at the group top and dissolves back to white at
+   the group's end, so the group reads differently from a plain section. */
+.training-group-panel {
+  border-top: 1px solid rgba(47, 58, 52, .07);
+  background: linear-gradient(180deg, #efeaf3 0%, #f6f4f7 12%, #f7f5f8 88%, #fff 100%);
+  animation: training-panel-arrive .8s cubic-bezier(.2, .7, .25, 1) both;
 }
 
-/* "Training for Your Dog" chapter — tinted with the site teal (--color-accent) */
-.training-chapter--teal {
-  background: linear-gradient(180deg, #e6f2f2 0%, #f2f8f8 33%, #fff 76%);
+/* "Training for Your Dog" band — tinted with the site teal (--color-accent) */
+.training-group-panel--teal {
+  background: linear-gradient(180deg, #e6f2f2 0%, #f3f8f8 12%, #f5f9f9 88%, #fff 100%);
   animation-delay: .16s;
 }
 
-@keyframes training-chapter-arrive {
+@keyframes training-panel-arrive {
   from {
     opacity: .72;
     transform: translateY(-8px);
@@ -62,12 +59,17 @@ Merged training + day school page
   }
 }
 
-.training-chapter .section-header {
+.training-group-panel .training-group .container {
+  padding-top: 3.25rem;
+  padding-bottom: .5rem;
+}
+
+.training-group-panel .section-header {
   padding-bottom: 0;
   text-align: left;
 }
 
-.training-chapter .small-heading {
+.training-group-panel .small-heading {
   margin: 0 0 .65rem;
   color: #796695;
   font-size: .8rem;
@@ -77,7 +79,7 @@ Merged training + day school page
   font-weight: 650;
 }
 
-.training-chapter .big-heading {
+.training-group-panel .big-heading {
   margin: 0;
   color: #2f3a34;
   font-size: 3rem;
@@ -86,18 +88,18 @@ Merged training + day school page
   letter-spacing: -1px;
 }
 
-.training-chapter .big-heading span {
+.training-group-panel .big-heading span {
   color: #796695;
 }
 
-.training-chapter .intro-lead {
+.training-group-panel .intro-lead {
   margin: .75rem 0 0;
   color: #59635d;
   line-height: 1.55;
 }
 
-.training-chapter--teal .small-heading,
-.training-chapter--teal .big-heading span {
+.training-group-panel--teal .small-heading,
+.training-group-panel--teal .big-heading span {
   color: #2c7d7f;
 }
 
@@ -108,7 +110,7 @@ Merged training + day school page
   background: linear-gradient(90deg, rgba(121, 102, 149, .35), rgba(121, 102, 149, 0));
 }
 
-.training-chapter--teal .training-chapter-divider {
+.training-group-panel--teal .training-chapter-divider {
   background: linear-gradient(90deg, rgba(44, 125, 127, .35), rgba(44, 125, 127, 0));
 }
 
@@ -128,16 +130,16 @@ Merged training + day school page
   opacity: .65;
 }
 
-.training-chapter--teal .training-chapter-seal {
+.training-group-panel--teal .training-chapter-seal {
   background: var(--color-accent);
 }
 
 @media (max-width: 768px) {
-  .training-chapter {
-    padding: 1.75rem 1.4rem;
+  .training-group-panel .training-group .container {
+    padding-top: 2rem;
   }
 
-  .training-chapter .big-heading {
+  .training-group-panel .big-heading {
     font-size: 2.2rem;
   }
 }
