@@ -3,6 +3,11 @@
 ## What this is
 A static HTML website (no build system) with a PHP contact/booking form. Pages: `index.html`, `boarding.html`, `contact.html`, `daycare.html`, `hiking.html`, `training.html`. Assets in `assets/` (css, img, js, vendor, scss, templates). Forms in `forms/`. Originally deployed to GoDaddy via FTP from a GitHub Action.
 
+### Training + Day Care are one page
+`training.html` is the merged Training & Day Care page and owns the `/training` URL (keep its canonical, title, GTM snippet and copy so search/analytics continuity is preserved). It contains: intro + consultation CTA, trainer bio (`#trainer`), "Training for You" (`#private-training`, `#workshops`), "Training for Your Dog" (`#private-tutoring`, `#field-trips`, `#private-school`, `#day-school`, `#boarding-school`), and "How We Work Together" (`#how-we-work`, process steps + private-training package table). Its sticky sub-navigation lives in `assets/css/training.css` + `assets/js/training-nav.js` (hover dropdowns on desktop, "Jump to a section" accordion under 992px); add a new service to both the sub-nav and the site-header Training dropdown when one is created.
+
+`daycare.html` is now only a page-top redirect to `/training`, and `.htaccess` also 301s `/daycare` and `/daycare.html` there. If that URL ever changes again, update all three together. Site-wide links point at the service anchors above, never at `/daycare`.
+
 ## How it runs here
 Two services in `docker-compose.base44.yml`, both bind-mounting the repo read-only at `/var/www/html`:
 

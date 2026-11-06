@@ -9,6 +9,10 @@ rewriterule ^(.*)$ http://barkingbearpetcare.com/$1 [R=301,NC,L]
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://barkingbearpetcare.com/$1 [R=301,NC,L]
 
+# REDIRECT OLD DAY CARE PAGE TO MERGED TRAINING PAGE----
+RewriteRule ^daycare/?$ /training [R=301,L,NC]
+RewriteRule ^daycare\.html$ /training [R=301,L,NC]
+
 # REDIRECT TO REMOVE .HTML SUFFIX-----------------------
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f

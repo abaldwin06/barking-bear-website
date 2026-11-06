@@ -139,10 +139,7 @@ section:first-of-type {
 }
 
 #why-us:target,#testimonials:target, #team:target,
-#pack-hikes:target, #training-hikes:target, 
-#day-camp:target, #day-school:target,
-#private-coaching:target, #puppy-training:target,
-#board-and-train:target, #skills-sessions:target
+#pack-hikes:target, #training-hikes:target
 {
   padding-top: var(--header-height-plus);
   margin-top: -1*var(--header-height-plus);
@@ -1138,6 +1135,8 @@ section.why-us {
   content: "";
   position: absolute;
   inset: 0;
+  /* decorative overlay only — it must not swallow clicks on content above the cards */
+  pointer-events: none;
 }
 
 .service-page .service-info h3 {
@@ -1227,8 +1226,13 @@ section.training {
     width: 100%;
   }
 
-#skills-sessions .service-info, #board-and-train .service-info {
+#private-tutoring .service-info, #boarding-school .service-info {
   background-position: top;
+}
+
+/*taller card so the full hand-held paw photo fits*/
+#boarding-school .service-info {
+  min-height: 28rem;
 }
 
 /*sizing of my photo on training bio section*/
@@ -1271,76 +1275,16 @@ section.training {
 }
 
 /*--------------------------------------------------------------
-# How We Work Together Section
+# Training Intro Section (consultation call to action)
 --------------------------------------------------------------*/
-/* box link is the outer box */
-#how-we-work .box-link {
-  width: 19%;
-}
-
-@media (max-width: 950px) {
-  #how-we-work .box-link {
-    width: 31%;
-  }
-}
-
-@media (max-width: 650px) {
-  #how-we-work .box-link {
-    width: 44%;
-  }
-}
-
-@media (max-width: 576px) {
-  #how-we-work .box-link {
-    width: 90%;
-  }
-}
-
-#how-we-work .box-link:hover {
-  color: var(--color-primary);
-  
-}
-
-/* icon box is the inner box */
-#how-we-work .icon-box {
-  border: #77639150 2px solid;
-  border-radius: 5px;
-  padding: 1rem 1.5rem;
-}
-
-#how-we-work .icon-box h2 {
-  font-size: 1.25rem !important;
-  font-weight: 400;
-  margin: 0 0 1rem 0;
-  font-family: var(--font-secondary);
-}
-
-#how-we-work .icon-box h2:hover {
-  text-decoration: underline;
-}
-
-#how-we-work .flex-box-why .icon-box h3 {
-  font-size: 1rem;
-  font-family: var(--font-default);
-  color: #6c757d;
-  line-height: 1.2rem;
-  margin-bottom: 1rem;
-}
-
-@media (min-width: 940px) {
-  #how-we-work .why-us .icon-box:hover {
-    transform: scale(1.1);
-  }
-}
-
 /* btn box is the purple box */
-#how-we-work .btn-box {
+#training-intro .btn-box {
   margin: .8rem 0;
   border-radius: 10px;
   width: 90%;
 }
 
-#how-we-work .btn-box .bi {
+#training-intro .btn-box .bi {
   margin-bottom: .5rem;
   font-size: 2.5rem;
   line-height: 4rem;
@@ -1353,7 +1297,7 @@ section.training {
   text-align: center;
 }
 
-#how-we-work .btn-box .sub-title {
+#training-intro .btn-box .sub-title {
   font-size: .3rem;
   font: var(--font-secondary);
   text-transform:uppercase;
@@ -1363,7 +1307,7 @@ section.training {
   margin-top: .4rem;
 }
 
-#how-we-work .btn-box h2 {
+#training-intro .btn-box h2 {
   color: #fff;
   text-align: center;
   font-weight: 600;
@@ -1372,29 +1316,29 @@ section.training {
 }
 
 @media (min-width: 940px) {
-  #how-we-work .btn-box:hover {
+  #training-intro .btn-box:hover {
     transform: scale(1.1);
   }
 }
 
 @media (max-width: 767px) {
-  #how-we-work .btn-box h2, #how-we-work .btn-box .sub-title {
+  #training-intro .btn-box h2, #training-intro .btn-box .sub-title {
     width:fit-content;
   }
 
-  #how-we-work .btn-box h2 {
+  #training-intro .btn-box h2 {
     font-size: 1.5rem;
   }
 }
 
 @media (max-width: 600px) {
-  #how-we-work .btn-box .bi {
+  #training-intro .btn-box .bi {
     margin-right: 10px;
   }
 }
 
 @media (max-width: 500px) {
-  #how-we-work .btn-box .bi {
+  #training-intro .btn-box .bi {
     display: none;
   }
 }
