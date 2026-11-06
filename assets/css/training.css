@@ -354,6 +354,17 @@ Merged training + day school page
   color: var(--color-primary);
 }
 
+/*--------------------------------------------------------------
+# Service card overlays - subtle tag line under the image title
+--------------------------------------------------------------*/
+.service-page .image-text .description {
+  margin: .15rem 0 0;
+  font-size: .85rem;
+  line-height: 1.35;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.72);
+}
+
 @media (max-width: 576px) {
   .pricing-block {
     padding: 1rem;
