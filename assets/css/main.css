@@ -1135,6 +1135,8 @@ section.why-us {
   content: "";
   position: absolute;
   inset: 0;
+  /* decorative overlay only — it must not swallow clicks on content above the cards */
+  pointer-events: none;
 }
 
 .service-page .service-info h3 {
