@@ -1228,6 +1228,11 @@ section.training {
   background-position: top;
 }
 
+/*taller card so the full hand-held paw photo fits*/
+#boarding-school .service-info {
+  min-height: 28rem;
+}
+
 /*sizing of my photo on training bio section*/
 #trainer .service-info {
   background-size: cover;
